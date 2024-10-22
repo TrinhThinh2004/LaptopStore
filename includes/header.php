@@ -16,8 +16,10 @@
                 <li><a class="logo nav-item">Laptop4U</a></li>
                 <ul>
                     <li class="search-container nav-item">
-                        <input type="text" placeholder="    Bạn tìm gì" class="search-input">
-                        <i class="fas fa-search icon"></i>
+                        <div class="form-control">
+                            <input type="text" placeholder="Bạn tìm gì" class="search-input">
+                            <i class="fas fa-search icon"></i>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a href=""><i class="fa-solid fa-cart-shopping icon"></i></a>
