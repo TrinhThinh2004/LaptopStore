@@ -1,16 +1,17 @@
 <?php
-// config.php
 $host = 'localhost';
 $dbname = 'laptopstore';
 $username = 'root';
 $password = '';
 
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8mb4", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
+
+$conn = mysqli_connect($host, $username, $password, $dbname);
+
+$list_sql = 'select * from laptops order by brand';
+
+$result = mysqli_query($conn, $list_sql);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo $row['brand'] . ' ' . $row['model'] . '<br>';
 }
- // ket noi thanh cong
-if ($conn) echo "ok";
 ?>

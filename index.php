@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-  <div class="nav">
-    <img src="asset/Untitled.jpg" class="logo" alt="Logo">
+  <?php
+  include('includes/header.php');
+  ?>
+
+  <!-- <div class="nav">
+    <h2 class="logo">Laptop4U</h2>
     <div class="search-container">
       <input type="text" placeholder="Search" class="search-input">
       <i class="fas fa-search"></i>
@@ -25,7 +29,7 @@
         <a href="#">Đăng nhập</a>
       </li>
     </ul>
-  </div>
+  </div> -->
 
   <!-- <div class="filter-options">
     <label for="price">Giá:</label>
@@ -151,7 +155,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/asus-vivobook-go-15-e1504fa-r5-nj776w-thumb-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Laptop Asus Vivobook Go 15 E1504FA R5 7520U/16GB/512GB/Chuột/Win11 (NJ776W)">
         <h3>Laptop Asus Vivobook Go 15 E1504FA R5 7520U/16GB/512GB/Chuột/Win11 (NJ776W)</h3>
         <p class="price">12.590.000₫</p>
@@ -161,7 +165,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/dell-inspiron-15-3520-i5-n5i5052w1-thumb-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Dell Inspiron 15 3520 i5 1235U (N5I5052W1)">
         <h3>Dell Inspiron 15 3520 i5 1235U (N5I5052W1)</h3>
         <p class="price">16.490.000₫</p>
@@ -171,7 +175,8 @@
       </div>
 
       <div class="product">
-        <img src="asset/hp-15-fd0234tu-i5-9q969pa-thumb-1-600x600.jpg" alt="HP 15 fd0234TU i5 1334U (9Q969PA)">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="HP 15 fd0234TU i5 1334U (9Q969PA)">
         <h3>HP 15 fd0234TU i5 1334U (9Q969PA)</h3>
         <p class="price">16.790.000₫</p>
         <p class="discount">19.790.000₫</p>
@@ -180,7 +185,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/lenovo-ideapad-slim-3-15iah8-i5-83er00evn-thumb-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Laptop Lenovo Ideapad Slim 3 15IAH8 i5 12450H/16GB/512GB/Win11 (83ER000EVN)">
         <h3>Laptop Lenovo Ideapad Slim 3 15IAH8 i5 12450H/16GB/512GB/Win11 (83ER000EVN)</h3>
         <p class="price">14.290.000₫</p>
@@ -190,7 +195,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/macbook-air-m1-2020-gray-600x600.jpg" alt="MacBook Air 13 inch M1">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
         <h3>MacBook Air 13 inch M1</h3>
         <p class="price">18.590.000₫</p>
         <p class="discount">19.990.000₫</p>
@@ -198,7 +203,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/lenovo-loq-gaming-15iax9-i5-83gs000jvn-thumb-new-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Laptop Lenovo Gaming LOQ 15IAX9 i5 12450HX/16GB/512GB/6GB RTX3050/144Hz/Win11 (83GS000JVN)">
         <h3>Laptop Lenovo Gaming LOQ 15IAX9 i5 12450HX/16GB/512GB/6GB RTX3050/144Hz/Win11 (83GS000JVN)</h3>
         <p class="price">21.690.000₫</p>
@@ -208,7 +213,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/dell-g15-5530-i9-i9hx161w11gr4060-thumb-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Laptop Dell G15 5530 i9 13900HX/16GB/1TB/8GB RTX4060/165Hz/OfficeHS/Win11 (i9HX161W11GR4060)">
         <h3>Laptop Dell G15 5530 i9 13900HX/16GB/1TB/8GB RTX4060/165Hz/OfficeHS/Win11 (i9HX161W11GR4060)</h3>
         <p class="price">40.990.000₫</p>
@@ -218,7 +223,8 @@
       </div>
 
       <div class="product">
-        <img src="asset/apple-macbook-pro-16-inch-m3-max-96gb-1tb-thumb-600x600.jpg" alt="MacBook Pro 16 inch M3 Max">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          alt="MacBook Pro 16 inch M3 Max">
         <h3>MacBook Pro 16 inch M3 Max</h3>
         <p class="price">109.990.000₫</p>
         <p>Quà 500.000₫</p>
@@ -226,7 +232,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/hp-omen-16-xf0070ax-r9-8w945pa-thumb-638647720407681790-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="HP OMEN 16 xf0070AX R9 7940HS (8W945PA)">
         <h3>HP OMEN 16 xf0070AX R9 7940HS (8W945PA)</h3>
         <p class="price">57.890.000₫</p>
@@ -236,7 +242,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/lenovo-legion-pro-7-16irx9h-i9-83de001mvn-thumb-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Laptop Lenovo Gaming Legion Pro 7 16IRX9H i9 14900HX/32GB/1TB/16GB RTX4090/240Hz/Win11">
         <h3>Laptop Lenovo Gaming Legion Pro 7 16IRX9H i9 14900HX/32GB/1TB/16GB RTX4090/240Hz/Win11</h3>
         <p class="price">96.990.000₫</p>
@@ -246,7 +252,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/dell-xps-13-9340-ultra-7-hxrgt-130724-110056-600x600.jpg"
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Dell XPS 13 9340 Ultra 7 155H (HXRGT)">
         <h3>Dell XPS 13 9340 Ultra 7 155H (HXRGT)</h3>
         <p class="price">55.990.000₫</p>
@@ -256,7 +262,7 @@
       </div>
 
       <div class="product">
-        <img src="asset/macbook-air-15-inch-m3-2024-16gb-256gb-060324-095629-600x600.jpg" alt="MacBook Air 15 inch M3">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
         <h3>MacBook Air 15 inch M31</h3>
         <p class="price">36.690.000₫</p>
         <p class="discount">37.990.000₫</p>
