@@ -1,24 +1,6 @@
 -- Tạo cơ sở dữ liệu với mã hóa UTF-8
 CREATE DATABASE LaptopStore DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 USE LaptopStore;
-drop database LaptopStore;
-
--- Xóa dữ liệu từ các bảng con trước
-DELETE FROM Shopping_Cart_Items; -- Xóa dữ liệu trong Shopping_Cart_Items trước
-DELETE FROM Order_Items;          -- Xóa dữ liệu trong Order_Items
-DELETE FROM Reviews;              -- Xóa dữ liệu trong Reviews
-DELETE FROM Laptop_Categories;     -- Xóa dữ liệu trong Laptop_Categories
-DELETE FROM Laptop_Images;        -- Xóa dữ liệu trong Laptop_Images
-
--- Sau đó xóa dữ liệu từ các bảng cha
-DELETE FROM Shopping_Cart;        -- Xóa dữ liệu trong Shopping_Cart
-DELETE FROM Orders;               -- Xóa dữ liệu trong Orders
-DELETE FROM Laptops;              -- Xóa dữ liệu trong Laptops
-DELETE FROM Users;                -- Xóa dữ liệu trong Users
-DELETE FROM Categories;           -- Xóa dữ liệu trong Categories
-
-
-drop table users;
 
 -- Bảng Users
 CREATE TABLE Users (
@@ -86,16 +68,6 @@ CREATE TABLE Order_Items (
   price DECIMAL(10, 2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Bảng Reviews
-CREATE TABLE Reviews (
-  review_id INT AUTO_INCREMENT PRIMARY KEY,
-  laptop_id INT,
-  user_id INT,
-  rating INT CHECK (rating >= 1 AND rating <= 5),
-  comment TEXT,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
 -- Bảng Shopping_Cart
 CREATE TABLE Shopping_Cart (
   cart_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -150,13 +122,4 @@ FOREIGN KEY (cart_id) REFERENCES Shopping_Cart(cart_id) ON DELETE CASCADE;
 ALTER TABLE Shopping_Cart_Items
 ADD CONSTRAINT fk_cart_items_laptops
 FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
--- Ràng buộc cho bảng Reviews
-ALTER TABLE Reviews
-ADD CONSTRAINT fk_reviews_laptops
-FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
-ALTER TABLE Reviews
-ADD CONSTRAINT fk_reviews_users
-FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE;
 
