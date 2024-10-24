@@ -18,13 +18,20 @@ CREATE TABLE Users (
 -- Bảng Laptops
 CREATE TABLE Laptops (
   laptop_id INT AUTO_INCREMENT PRIMARY KEY,
-  brand VARCHAR(50) NOT NULL,
-  model VARCHAR(100) NOT NULL,
-  processor VARCHAR(100),
-  ram INT,
-  storage INT,
-  price DECIMAL(10, 2) NOT NULL,
-  description TEXT,
+  brand VARCHAR(50) NOT NULL, -- Hãng sản xuất laptop
+  model VARCHAR(100) NOT NULL, -- Model laptop
+  processor VARCHAR(100) NOT NULL, -- Tên đầy đủ của bộ xử lý (CPU) như Intel Core i5 - 12450H, AMD Ryzen 7 - 5700U
+  ram_capacity INT NOT NULL, -- Dung lượng RAM (GB)
+  ram_type VARCHAR(50) NOT NULL, -- Loại RAM như DDR4, DDR5, v.v.
+  ram_speed VARCHAR(50) NOT NULL, -- Tốc độ RAM như 3200 MHz, 4800 MHz
+  storage INT NOT NULL, -- Dung lượng ổ cứng (GB)
+  storage_type VARCHAR(50) NOT NULL, -- Loại ổ cứng (SSD, HDD)
+  gpu VARCHAR(100) NOT NULL, -- Loại card đồ họa (GeForce RTX™ 4060 8GB GDDR6 hoặc Onboard)
+  screen_size VARCHAR(50) NOT NULL, -- Kích thước màn hình (ví dụ: 15.6")
+  screen_resolution VARCHAR(50) NOT NULL, -- Độ phân giải màn hình (ví dụ: Full HD (1920 x 1080))
+  screen_refresh_rate VARCHAR(50), -- Tần số quét màn hình (ví dụ: 144Hz)
+  price DECIMAL(15, 2) NOT NULL, -- Giá laptop (VNĐ)
+  description TEXT, -- Mô tả thêm về laptop
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -33,7 +40,7 @@ CREATE TABLE Laptop_Images (
   image_id INT AUTO_INCREMENT PRIMARY KEY,
   laptop_id INT,
   image_url VARCHAR(255) NOT NULL,
-  is_thumbnail BOOLEAN DEFAULT FALSE
+  FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Categories
@@ -47,7 +54,9 @@ CREATE TABLE Categories (
 CREATE TABLE Laptop_Categories (
   laptop_id INT,
   category_id INT,
-  PRIMARY KEY (laptop_id, category_id)
+  PRIMARY KEY (laptop_id, category_id),
+  FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE,
+  FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Orders
@@ -56,7 +65,9 @@ CREATE TABLE Orders (
   user_id INT,
   total_price DECIMAL(10, 2) NOT NULL,
   order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-  status TINYINT DEFAULT 1 -- 1: pending, 2: completed, 3: cancelled
+  status TINYINT DEFAULT 1, -- 1: pending, 2: completed, 3: cancelled
+  payment_method TINYINT NOT NULL, -- 1: cash, 2: bank transfer (QR)
+  FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Order_Items
@@ -65,61 +76,28 @@ CREATE TABLE Order_Items (
   order_id INT,
   laptop_id INT,
   quantity INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL
+  price DECIMAL(10, 2) NOT NULL,
+  FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+  FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Bảng Shopping_Cart
-CREATE TABLE Shopping_Cart (
+-- Bảng Cart (Giỏ hàng)
+CREATE TABLE Cart (
   cart_id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Bảng Shopping_Cart_Items
-CREATE TABLE Shopping_Cart_Items (
-  cart_item_id INT AUTO_INCREMENT PRIMARY KEY,
-  cart_id INT,
   laptop_id INT,
   quantity INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL
+  price DECIMAL(10, 2) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+  FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE,
+  UNIQUE KEY unique_user_laptop (user_id, laptop_id) -- Ràng buộc duy nhất: mỗi laptop chỉ được thêm một lần
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Thêm ràng buộc khóa ngoại cho các bảng
-
--- Ràng buộc cho bảng Laptop_Images
-ALTER TABLE Laptop_Images
-ADD CONSTRAINT fk_laptop_images_laptops
-FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
--- Ràng buộc cho bảng Orders
-ALTER TABLE Orders
-ADD CONSTRAINT fk_orders_users
-FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE;
-
--- Ràng buộc cho bảng Order_Items
-ALTER TABLE Order_Items
-ADD CONSTRAINT fk_order_items_orders
-FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE;
-
-ALTER TABLE Order_Items
-ADD CONSTRAINT fk_order_items_laptops
-FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
--- Ràng buộc cho bảng Laptop_Categories
-ALTER TABLE Laptop_Categories
-ADD CONSTRAINT fk_laptop_categories_laptops
-FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
-ALTER TABLE Laptop_Categories
-ADD CONSTRAINT fk_laptop_categories_categories
-FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE;
-
--- Ràng buộc cho bảng Shopping_Cart_Items
-ALTER TABLE Shopping_Cart_Items
-ADD CONSTRAINT fk_cart_items_cart
-FOREIGN KEY (cart_id) REFERENCES Shopping_Cart(cart_id) ON DELETE CASCADE;
-
-ALTER TABLE Shopping_Cart_Items
-ADD CONSTRAINT fk_cart_items_laptops
-FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE;
-
+-- Trigger để xóa giỏ hàng sau khi đặt hàng thành công
+--CREATE TRIGGER after_order_completed
+--AFTER INSERT ON Orders
+--FOR EACH ROW
+--BEGIN
+  --DELETE FROM Cart WHERE user_id = NEW.user_id;
+--END;

@@ -1,0 +1,68 @@
+:root {
+    --main-color: #4CAF50;
+}
+
+
+.dashboard-container {
+    width: 100%;
+    height: auto;
+}
+
+.admin-sidebar {
+    position: fixed;
+    max-width: 250px;
+    height: auto;
+    font-size: 20px;
+    border-right: 5px solid #ccc;
+}
+
+.admin-sidebar ul {
+    margin-top: 20px;
+}
+
+.admin-sidebar ul li {
+    width: 100%;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.admin-sidebar ul li a,
+.admin-sidebar ul li i {
+    color: black;
+}
+
+.dashboard {
+    float: right;
+    padding-top: 20px;
+    max-width: 900px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin-top: 20px;
+    background-color: rgb(214, 254, 174);
+    height: 200px;
+    width: 400px;
+    align-items: center;
+    padding: 30px;
+    border-radius: 30px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-icon {
+    font-size: 50px;
+    margin-top: 5px;
+}
