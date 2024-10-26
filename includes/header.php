@@ -22,8 +22,13 @@
                             <i class="fas fa-search icon"></i>
                         </div>
                     </li>
+<<<<<<< HEAD
                     <li class="nav-item text-icon">
                         <a href=""><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
+=======
+                    <li class="nav-item">
+                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i> Giỏ hàng</a>
+>>>>>>> a49d0a20f1d8f5ae35be1cfa1095f9b1a52054e2
                     </li>
                     <li class="nav-item text-icon">
                         <a href="#">
