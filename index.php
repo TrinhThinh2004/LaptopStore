@@ -18,7 +18,7 @@
 
   <div class="center">
     <div class="container">
-    <div class="lst-img">
+      <div class="lst-img">
         <img src="assets/images/logo/asus.png" alt="HP">
         <img src="assets/images/logo/dell.png" alt="Asus">
         <img src="assets/images/logo/hp.png" alt="Dell">
@@ -79,50 +79,99 @@
         </div>
         <button id="filterButton"><i class="fa-solid fa-filter"></i>&nbspLọc</button>
       </div>
-    </div>
 
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
-        alt="MacBook Air 15 inch M3">
-      <h3>MacBook Air 15 inch M31</h3>
-      <p class="price">36.690.000₫</p>
-      <p class="discount">37.990.000₫</p>
-      <button>Mua ngay</button>
-    </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
-        alt="MacBook Air 15 inch M3">
-      <h3>MacBook Air 15 inch M31</h3>
-      <p class="price">36.690.000₫</p>
-      <p class="discount">37.990.000₫</p>
-      <button>Mua ngay</button>
-    </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
-        alt="MacBook Air 15 inch M3">
-      <h3>MacBook Air 15 inch M31</h3>
-      <p class="price">36.690.000₫</p>
-      <p class="discount">37.990.000₫</p>
-      <button>Mua ngay</button>
-    </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
-        alt="MacBook Air 15 inch M3">
-      <h3>MacBook Air 15 inch M31</h3>
-      <p class="price">36.690.000₫</p>
-      <p class="discount">37.990.000₫</p>
-      <button>Mua ngay</button>
-    </div>
-    <div class="product">
-      <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
-        alt="MacBook Air 15 inch M3">
-      <h3>MacBook Air 15 inch M31</h3>
-      <p class="price">36.690.000₫</p>
-      <p class="discount">37.990.000₫</p>
-      <button>Mua ngay</button>
+
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
+      <div class="product">
+        <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
+          alt="MacBook Air 15 inch M3">
+        <h3>MacBook Air 15 inch M31</h3>
+        <p class="price">36.690.000₫</p>
+        <p class="discount">37.990.000₫</p>
+        <button>Mua ngay</button>
+      </div>
     </div>
   </div>
-</div>
+  </div>
 </body>
 
 </html>
