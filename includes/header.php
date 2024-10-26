@@ -24,7 +24,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
+                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i> Giỏ hàng</a>
                     </li>
                     <li class="nav-item">
                         <a href="#">

@@ -93,6 +93,7 @@ nav ul li a {
 
 .sub-menu {
     display: none;
+    z-index: 1000;
 }
 
 @media (max-width: 1100px) {
