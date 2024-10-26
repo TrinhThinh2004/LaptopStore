@@ -58,7 +58,6 @@ nav ul li a {
     padding: 7px 13px;
     border-radius: 3px;
     cursor: pointer;
-    color: white;
 }
 
 .search-input {
@@ -81,6 +80,22 @@ nav ul li a {
     padding: 10px;
     cursor: pointer;
     font-weight: bold;
+}
+
+.text-icon {
+    background-color: #fff;
+    border-radius: 40px;
+    line-height: 30px;
+}
+
+.text-icon a {
+    padding: 0 10px 0 0;
+    color: #04aa6d;
+}
+
+.text-icon a i {
+    padding: 0 5px 0 7px;
+    color: #04aa6d;
 }
 
 .menu-icon i {
