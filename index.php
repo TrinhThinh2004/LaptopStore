@@ -16,8 +16,6 @@
   <?php
   include('home.php');
   ?>
-
-
 </body>
 
 </html>
