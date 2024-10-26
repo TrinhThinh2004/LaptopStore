@@ -74,7 +74,6 @@
                 <button id="filterButton"><i class="fa-solid fa-filter"></i>&nbspLọc</button>
             </div>
 
-
             <div class="product">
                 <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=600"
                     alt="MacBook Air 15 inch M3">

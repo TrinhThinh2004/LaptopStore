@@ -11,22 +11,18 @@ body {
     background-color: #ccc;
 }
 
-<<<<<<< HEAD:assets/css/home.css
 .center {
     max-width: 1200px;
     margin: 0 auto;
-    display: flex;
     padding: 20px;
-    justify-content: space-between;
     align-items: start;
     background-color: #fff;
     max-height: 100%;
 }
-=======
->>>>>>> a0225037fcf98513c2db83afd1e91206821b1f79:assets/css/style.css
 
 .container {
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 10px;
     max-width: 1200px;
@@ -124,6 +120,7 @@ body {
 }
 
 .lst-img {
+    margin-top: 70px;
     display: flex;
     gap: 15px;
     width: 130px;
