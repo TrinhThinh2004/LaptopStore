@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,6 +40,7 @@
         }
 
         .signup-container input {
+            box-sizing: border-box;
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -78,6 +80,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="signup-container">
         <h2>Đăng Ký</h2>
@@ -101,4 +104,5 @@
         </div>
     </div>
 </body>
+
 </html>

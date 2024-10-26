@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
         }
 
         .login-container input {
+            box-sizing: border-box;
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -79,6 +81,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Đăng Nhập</h2>
@@ -96,4 +99,5 @@
         </div>
     </div>
 </body>
+
 </html>

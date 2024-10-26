@@ -39,8 +39,11 @@
 }
 
 .dashboard-header {
+    font-size: 30px;
     text-align: center;
-    margin-bottom: 20px;
+    padding: 40px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
 }
 
 .cards {

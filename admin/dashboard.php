@@ -23,6 +23,9 @@
 
     <div class="grid">
         <div class="dashboard-container">
+            <div class="dashboard-header">
+                <h1>Trang chủ quản trị</h1>
+            </div>
             <div class="admin-sidebar">
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
@@ -33,9 +36,7 @@
                 </ul>
             </div>
             <div class="dashboard">
-                <div class="dashboard-header">
-                    <h1>Trang chủ quản trị</h1>
-                </div>
+
 
                 <div class="cards">
                     <div class="card">
