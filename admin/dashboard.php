@@ -30,9 +30,10 @@
                 <ul>
                     <li><a href="dashboard.php">Dashboard</a></li>
                     <li><a href="products.php">Quản lý sản phẩm</a></li>
+                    <li><a href="products.php">Quản lý danh mục sản phẩm</a></li>
                     <li><a href="orders.php">Quản lý đơn hàng</a></li>
                     <li><a href="users.php">Quản lý người dùng</a></li>
-                    <li><a href="logout.php">Đăng xuất</a></li>
+                    <li><a href="../logout.php">Đăng xuất</a></li>
                 </ul>
             </div>
             <div class="dashboard">

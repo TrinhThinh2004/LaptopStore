@@ -1,3 +1,15 @@
+<?php
+ob_start();
+session_start();
+include('connect.php');
+$username = "Đăng nhập";
+$link_user = "login.php";
+if (isset($_SESSION["username"])) {
+    $link_user = "user.php";
+    $username = "Xin chào, " . $_SESSION["username"];
+}
+?>
+
 <html>
 
 <head>
@@ -27,8 +39,9 @@
 
                     </li>
                     <li class="nav-item text-icon">
-                        <a href="login.php">
-                            <i class="fa-solid fa-user icon"></i>Đăng nhập</a>
+                        <a href=<?php echo $link_user; ?>>
+                            <i class="fa-solid fa-user icon"></i><?php echo $username; ?>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -37,7 +50,7 @@
                     <li class="menu-item"><input type="text" placeholder="Tìm kiếm sản phẩm"></li>
                     <li class="menu-item"><a href="index.php">TRANG CHỦ</a></li>
                     <li class="menu-item"><a href="cart.php">GIỎ HÀNG</a></li>
-                    <li class="menu-item"><a href="login.php">ĐĂNG NHẬP</a></li>
+                    <li class="menu-item"><a href=<?php echo $link_user; ?>><?php echo $username; ?></a></li>
                 </ul>
             </div>
         </div>

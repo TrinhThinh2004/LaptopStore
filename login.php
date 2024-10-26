@@ -3,6 +3,11 @@ ob_start();
 session_start();
 include_once("includes/connect.php");
 
+if (isset($_SESSION["success_message"])) {
+    $success_message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
+
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
@@ -13,7 +18,7 @@ if (isset($_POST["submit"])) {
         if ($row > 0) {
             $user = mysqli_fetch_assoc($query);
             $_SESSION["username"] = $username;
-            $_SESSION["password"] = $password;
+            // $_SESSION["full_name"] = $user["full_name"];
             $_SESSION["role"] = $user["role"];
             if ($user["role"] == "1") {
                 header('location: admin/dashboard.php');
@@ -113,6 +118,11 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
+    <?php
+    if ($success_message != '') {
+        echo "<div style='color: green; text-align: center;'>$success_message</div>";
+    }
+    ?>
     <div class="login-container">
         Vô admin:
         username: admin, password: admin <br>

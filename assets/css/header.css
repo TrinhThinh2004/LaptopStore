@@ -68,7 +68,7 @@ nav ul li a {
 
 .search-input {
     height: 40px;
-    min-width: 600px;
+    min-width: 500px;
     border-radius: 20px;
     border: 1px solid #ccc;
     padding: 15px 20px;
@@ -91,7 +91,7 @@ nav ul li a {
 .text-icon {
     background-color: #fff;
     border-radius: 40px;
-    line-height: 30px;
+    line-height: 35px;
     right: 10px;
 }
 
