@@ -14,19 +14,22 @@ body {
     background-color: #fff;
 }
 
-.grid {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-    top: 0;
-    height: auto;
-}
 
 header {
     height: 60px;
     background-color: #4CAF50;
     color: white;
+    position: fixed;
+    width: 100vw;
 }
+
+.grid {
+    width: 1200px;
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+}
+
 
 nav {
     width: 100%;
@@ -39,12 +42,14 @@ nav {
     font-weight: bold;
     float: left;
     line-height: 60px;
-    margin-left: 20px;
+    margin-left: 5px;
     cursor: pointer;
 }
 
 nav ul {
+    position: relative;
     float: right;
+    right: 20px;
 }
 
 nav ul li {
@@ -86,6 +91,7 @@ nav ul li a {
     background-color: #fff;
     border-radius: 40px;
     line-height: 30px;
+    right: 10px;
 }
 
 .text-icon a {
@@ -108,7 +114,6 @@ nav ul li a {
 
 .sub-menu {
     display: none;
-    z-index: 1000;
 }
 
 @media (max-width: 1100px) {
@@ -141,6 +146,7 @@ nav ul li a {
         text-align: center;
         background-color: #085a27;
         transition: right 0.2s ease;
+        z-index: 1000;
     }
 
     .sub-menu.active {
@@ -148,15 +154,15 @@ nav ul li a {
     }
 
     .menu-item {
-        padding: 0;
-    }
-
-    .menu-item {
-        padding: 10px;
+        margin-top: 20px;
+        height: 35px;
+        width: 100%;
     }
 
     .menu-item a {
+        line-height: 35px;
         color: white;
+        display: block;
     }
 
     .sub-menu .menu-item input {

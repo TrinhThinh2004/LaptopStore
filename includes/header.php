@@ -1,12 +1,11 @@
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
     <title>Document</title>
-
-
 </head>
 
 <body>
@@ -24,11 +23,11 @@
                     </li>
 
                     <li class="nav-item text-icon">
-                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
+                        <a href="cart.php"><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
 
                     </li>
                     <li class="nav-item text-icon">
-                        <a href="#">
+                        <a href="login.php">
                             <i class="fa-solid fa-user icon"></i>Đăng nhập</a>
                     </li>
                 </ul>
@@ -36,9 +35,9 @@
             <div class="sub-menu">
                 <ul>
                     <li class="menu-item"><input type="text" placeholder="Tìm kiếm sản phẩm"></li>
-                    <li class="menu-item"><a href="">TRANG CHỦ</a></li>
-                    <li class="menu-item"><a href="">GIỎ HÀNG</a></li>
-                    <li class="menu-item"><a href="../login.php">ĐĂNG NHẬP</a></li>
+                    <li class="menu-item"><a href="index.php">TRANG CHỦ</a></li>
+                    <li class="menu-item"><a href="cart.php">GIỎ HÀNG</a></li>
+                    <li class="menu-item"><a href="login.php">ĐĂNG NHẬP</a></li>
                 </ul>
             </div>
         </div>

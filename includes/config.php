@@ -7,11 +7,8 @@ $password = '';
 
 $conn = mysqli_connect($host, $username, $password, $dbname);
 
-$list_sql = 'select * from laptops order by brand';
-
-$result = mysqli_query($conn, $list_sql);
-
-while ($row = mysqli_fetch_assoc($result)) {
-    echo $row['brand'] . ' ' . $row['model'] . '<br>';
+if ($conn) {
+    $setLang = mysqli_query($conn, "SET NAMES 'utf8'");
+} else {
+    die("Kết nối thất bại! " . mysqli_connect_error());
 }
-?>
