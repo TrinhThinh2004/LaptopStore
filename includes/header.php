@@ -24,10 +24,12 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i></a>
+                        <a href=""><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">Đăng nhập</a>
+                        <a href="#">
+                            <i class="fa-solid fa-user icon"></i>
+                            Đăng nhập</a>
                     </li>
                 </ul>
             </nav>

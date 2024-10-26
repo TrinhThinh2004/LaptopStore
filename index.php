@@ -6,47 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
-  <div class="nav">
-    <div class="store">
-      <a href="#"><img src="assets/images/Logo.jpg" class="logo" alt="Logo"></a>
-    </div>
-    <div class="search-container">
-      <input type="text" placeholder="Search" class="search-input">
-      <i class="fas fa-search"></i>
-    </div>
-    <ul>
-      <a href="#" class="cart"><i class="fa-solid fa-cart-shopping"></i> Giỏ hàng</a>
-      <a href="login.html" class="login"><i class="fa-regular fa-user"></i>Tài khoản</a>
-    </ul>
-  </div>
-
-
-
-  <!-- <div class="banner">
-    <div class="banner-item">
-      <img src="asset/hp-15-fd0234tu-i5-9q969pa-2-1-750x500.jpg" alt="Laptop HP Banner">
-      <div class="banner-text">
-        <p>LAPTOP HP CORE I5/R5</p>
-        <span class="price">Chỉ từ 13.490.000₫</span>
-        <p>TẶNG OFFICE BẢN QUYỀN + TRẢ TRƯỚC 0đ/TRẢ GÓP 0%</p>
-        <small>Học sinh – Sinh viên giảm thêm đến 500.000</small>
-      </div>
-    </div>
-
-    <div class="banner-item">
-      <img src="asset/lenovo-ideapad-slim-3-15iah8-i5-83er00evn-glr-2-750x500.jpg" alt="Laptop Lenovo Banner">
-      <div class="banner-text">
-        <p>LAPTOP LENOVO CORE I5/R5</p>
-        <span class="price">Chỉ từ 12.490.000₫</span>
-        <p>TẶNG OFFICE BẢN QUYỀN + TRẢ TRƯỚC 0đ/TRẢ GÓP 0%</p>
-        <small>Học sinh – Sinh viên giảm thêm đến 500.000</small>
-      </div>
-    </div>
-  </div> -->
+  <?php
+  include('includes/header.php');
+  ?>
 
 
   <div class="center">
@@ -83,7 +50,7 @@
 
               <div class="filter-section">
                 <h3>Loại sản phẩm</h3>
-                <select name="type" >
+                <select name="type">
                   <option>none</option>
                   <option>Laptop AI</option>
                   <option>Gaming</option>
@@ -97,26 +64,26 @@
 
               <div class="filter-section">
                 <h3>RAM</h3>
-                  <select name="ram">
-                    <option>none</option>
-                    <option>2 GB</option>
-                    <option>4 GB</option>
-                    <option>8 GB</option>
-                    <option>16 GB</option>
-                    <option>18 GB</option>
-                    <option>24 GB</option>
-                  </select>
+                <select name="ram">
+                  <option>none</option>
+                  <option>2 GB</option>
+                  <option>4 GB</option>
+                  <option>8 GB</option>
+                  <option>16 GB</option>
+                  <option>18 GB</option>
+                  <option>24 GB</option>
+                </select>
               </div>
 
               <div class="filter-section">
                 <h3>Ổ cứng</h3>
-                  <select name="disk">
-                    <option>none</option>
-                    <option>SSD 2TB</option>
-                    <option>SSD 1TB</option>
-                    <option>SSD 512GB</option>
-                    <option>SSD 256GB</option>
-                  </select>
+                <select name="disk">
+                  <option>none</option>
+                  <option>SSD 2TB</option>
+                  <option>SSD 1TB</option>
+                  <option>SSD 512GB</option>
+                  <option>SSD 256GB</option>
+                </select>
               </div>
             </div>
           </div>
