@@ -11,7 +11,8 @@ VALUES
     ('AI', 'Chuyên dụng cho AI'),
     ('Gaming', 'Chiến game bao đỉnh'),
     ('Học tập - Văn phòng', 'Học sinh - Sinh viên - Dân văn phòng'),
-    ('Đồ họa - Kỹ thuật', 'Đồ họa - Kỹ thuật'),
+    ('Đồ họa - Kỹ thuật', 'Đồ họa'),
+    ('Kỹ thuật', 'Kỹ thuật'),
     ('Mỏng nhẹ', 'Siuu nhẹ'),
     ('Cao cấp', 'Đồ đại gia');
 
