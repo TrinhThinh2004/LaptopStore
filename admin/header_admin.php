@@ -3,7 +3,9 @@ ob_start();
 session_start();
 include('../includes/connect.php');
 $username = "";
+$link_user = "login.php";
 if (isset($_SESSION["username"])) {
+    $link_user = "../index.php?act=user";
     $username = "Xin chào, Quản trị viên " . $_SESSION["username"];
 }
 
@@ -19,7 +21,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == 1) {
                     <h2 class="logo nav-item">Laptop4U</h2>
                     <ul>
                         <li class="nav-item">
-                            <a href="../user.php"><?php echo $username; ?></a>
+                            <a href=<?php echo $link_user; ?>><?php echo $username; ?></a>
                         </li>
                     </ul>
                 </nav>
