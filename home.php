@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+<?php
+  ob_start();
+  
+  if(isset($_POST["submit"])){
+    $product_id = $_POST['product_id'];
+    if ($product_id) {
+      header('location: checkout.php?product_id='. urlencode($product_id));
+      exit;   
+    } else {
+        echo "Sản phẩm không tồn tại!";
+    }
+  };
+?>
+  
   <link rel="stylesheet" href="assets/css/home.css">
   <link rel="stylesheet" href="assets/css/header.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-
-<body>
 
   <div class="container">
     <div class="lst-img">
@@ -88,7 +92,15 @@
       <p class="price">36.690.000₫</p>
       <p class="discount">37.990.000₫</p>
       <div class="button-container">
-        <button>Mua ngay</button>
+      <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST" style="display: inline;">
+            <input type="hidden" name="product_id" value="83ER000EVN">
+            <button type="submit" class="btn">Mua ngay</button>
+        </form>
+        
+        <form action="cart.php" method="POST" style="display: inline;">
+            <input type="hidden" name="product_id" value="83ER000EVN">
+            <button type="submit" class="btn">Thêm</button>
+        </form>
       </div>
     </div>
     <div class="product">
@@ -141,8 +153,4 @@
         <button>Mua ngay</button>
       </div>
     </div>
-
   </div>
-</body>
-
-</html>

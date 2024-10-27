@@ -1,5 +1,14 @@
-.grid {
+html,
+body {
+    background-color: white;
+}
+
+.main {
+    background-color: white;
+    min-height: 100vh;
+    position: relative;
     width: 1200px;
     max-width: 100%;
     margin: 0 auto;
+    top: 40px;
 }
