@@ -1,23 +1,28 @@
-<link rel="stylesheet" href="assets/css/header.css">
-<link rel="stylesheet" href="assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
 
-<?php
-include('includes/header.php');
-?>
-<div class="main">
-    <?php
-      switch ($_GET['act']) {
-        case 'product':
-          include('product.php');
-          break;
-        case 'user':
-          include('user.php');
-          break;
-        case 'cart':
-          include('cart.php');
-          break;
+  <?php
+  include('includes/header.php');
+ 
+  ?>
+  <?php
+ include('includes/banner.php');
+  ?>
+  <div class="main">
+      <?php
+        switch ($_GET['act'] ?? '') {
+          
+          case 'product':
+            include('product.php');
+            break;
+          case 'user':
+            include('user.php');
+            break;
+          case 'cart':
+            include('cart.php');
+            break;
 
-        default: include('home.php');
-      }
-    ?>
-</div>
+          default: include('home.php');
+        }
+      ?>
+  </div>
