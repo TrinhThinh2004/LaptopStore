@@ -93,11 +93,3 @@ CREATE TABLE Cart (
   FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE,
   UNIQUE KEY unique_user_laptop (user_id, laptop_id) -- Ràng buộc duy nhất: mỗi laptop chỉ được thêm một lần
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- Trigger để xóa giỏ hàng sau khi đặt hàng thành công
---CREATE TRIGGER after_order_completed
---AFTER INSERT ON Orders
---FOR EACH ROW
---BEGIN
-  --DELETE FROM Cart WHERE user_id = NEW.user_id;
---END;

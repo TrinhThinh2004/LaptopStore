@@ -13,7 +13,7 @@ VALUES
 ('Đồ họa', 'Đồ họa'), -- 4
 ('Kỹ thuật', 'Kỹ thuật'), -- 5
 ('Mỏng nhẹ', 'Siuu nhẹ'), -- 6
-('Cao cấp', 'Đồ đại gia') -- 7
+('Cao cấp', 'Đồ đại gia'); -- 7
 
 
 INSERT INTO Laptop_Categories (laptop_id, category_id)
@@ -106,7 +106,7 @@ VALUES
 (41, 6),
 (41, 7),
 (42, 6),
-(42, 7)
+(42, 7);
 
 
 

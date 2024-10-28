@@ -12,6 +12,8 @@ LIMIT 10";
 
 $query = mysqli_query($conn, $sql);
 
+
+
 ?>
 
 <link rel="stylesheet" href="assets/css/home.css">
@@ -99,7 +101,7 @@ $query = mysqli_query($conn, $sql);
   <div class="product-container">
   <?php
   while ($product = mysqli_fetch_array($query)) { ?>
-    <a href="product_detail.php?id=83ER000EVN" class="product-link">
+    <a href="product_detail.php?id=<?php echo $product['laptop_id']?> " class="product-link">
       <div class="product">
         <img
           src="<?php echo htmlspecialchars($product['image_url']); ?>"

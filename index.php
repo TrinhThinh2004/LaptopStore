@@ -9,8 +9,8 @@
       <?php
         switch ($_GET['act'] ?? '') {
           
-          case 'product':
-            include('product.php');
+          case 'product_detail':
+            include('product_detail.php');
             break;
           case 'user':
             include('user.php');
