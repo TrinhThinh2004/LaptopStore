@@ -125,6 +125,11 @@ $query = mysqli_query($conn, $sql);
 ?>
 </div>
 
+
+
+
+    
+
 <script>
   const carouselInner = document.querySelector('.carousel-inner');
   const images = document.querySelectorAll('.img-feature');
