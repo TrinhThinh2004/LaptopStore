@@ -210,4 +210,4 @@ VALUES
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/.1.jpg'),
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/.2.jpg'),
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/.3.jpg'),
-('42','assets/images/apple/apple_macbook_air_13_inch_m3/.4.jpg'),
+('42','assets/images/apple/apple_macbook_air_13_inch_m3/.4.jpg')

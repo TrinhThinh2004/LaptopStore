@@ -3,11 +3,8 @@
 
   <?php
   include('includes/header.php');
- 
   ?>
-  <?php
- include('includes/banner.php');
-  ?>
+
   <div class="main">
       <?php
         switch ($_GET['act'] ?? '') {
