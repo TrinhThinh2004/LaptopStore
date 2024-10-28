@@ -17,9 +17,16 @@ body {
     flex-wrap: wrap;
     gap: 10px;
     max-width: 1200px;
-    margin:auto;
-    top: 75px;
+    margin: auto;
+    top: 23px;
     position: relative;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
 }
 
 .product {
@@ -53,7 +60,7 @@ body {
     white-space: normal;
     overflow: hidden;
     display: -webkit-box;
-    /* -webkit-line-clamp: 2; */
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
@@ -98,6 +105,8 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 5px;
+    white-space: nowrap;
 }
 
 .product button:hover {
@@ -153,21 +162,40 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-.banner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-     /* padding: 20px; */
-    margin-top: 10px; 
-     /* position: fixed;  */
-     /* max-width: 1200px; */
-     width: 100%;
-}
-.banner img {
+
+.carousel {
+    position: relative;
     width: 100%;
-    max-width: 1200px;
-    /* margin-left: 20%;
-    margin-right: 20%; */
-    margin: auto;
-    height: auto;
+    overflow: hidden;
+    height: 80%;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.img-feature {
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1;
+}
+
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
 }
