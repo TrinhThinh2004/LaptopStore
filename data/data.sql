@@ -2,7 +2,7 @@ INSERT INTO Users (username, password, email, full_name, phone_number, address, 
 VALUES 
 ('admin', 'admin', 'admin@example.com', 'Admin User', '1234567890', '123 Admin St', 1),
 ('user1', 'user1', 'user1@example.com', 'John Doe', '0987654321', '456 John Ave', 0),
-('user2', 'user2', 'user2@example.com', 'John Doe', '0987654321', '456 John Ave', 0)
+('user2', 'user2', 'user2@example.com', 'John Doe', '0987654321', '456 John Ave', 0);
 
 
 INSERT INTO Categories (category_name, description)
@@ -13,7 +13,7 @@ VALUES
 ('Đồ họa', 'Đồ họa'), -- 4
 ('Kỹ thuật', 'Kỹ thuật'), -- 5
 ('Mỏng nhẹ', 'Siuu nhẹ'), -- 6
-('Cao cấp', 'Đồ đại gia') -- 7
+('Cao cấp', 'Đồ đại gia'); -- 7
 
 
 INSERT INTO Laptop_Categories (laptop_id, category_id)
@@ -106,7 +106,7 @@ VALUES
 (41, 6),
 (41, 7),
 (42, 6),
-(42, 7)
+(42, 7);
 
 
 
