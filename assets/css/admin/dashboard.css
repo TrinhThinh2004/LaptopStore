@@ -16,10 +16,7 @@
     font-size: 20px;
     border-right: 5px solid #ccc;
     float: left;
-}
-
-.admin-sidebar ul {
-    margin-top: 20px;
+    background-color: #4CAF50;
 }
 
 .admin-sidebar ul li {
@@ -31,7 +28,7 @@
 
 .admin-sidebar ul li a,
 .admin-sidebar ul li i {
-    color: black;
+    color: white;
 }
 
 .dashboard {
@@ -41,18 +38,12 @@
     margin-left: 250px;
 }
 
-.dashboard-header {
-    font-size: 30px;
-    text-align: center;
-    padding: 40px;
-    font-weight: bold;
-    border-bottom: 1px solid #ccc;
-}
 
 .cards {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-left: 50px;
 }
 
 .card {
@@ -72,4 +63,58 @@
 .card-icon {
     font-size: 50px;
     margin-top: 5px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+table {
+    width: 800px;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-add {
+    background-color: #008CBA;
+    border-radius: 5px;
+    color: white;
+    margin-bottom: 10px;
+    margin-left: auto;
+    display: block;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; 
+}
+.search-container input {
+    padding: 5px;
+    margin-right: 10px;
 }
