@@ -85,7 +85,7 @@ while ($row = mysqli_fetch_array($query)) {
                             <td><?php echo $result['storage_type'];?></td>
                         </tr>
                         <tr>
-                            <td>Gpu</td>
+                            <td>GPU</td>
                             <td><?php echo $result['gpu'];?></td>
                         </tr>
                         <tr>
@@ -97,7 +97,7 @@ while ($row = mysqli_fetch_array($query)) {
                             <td><?php echo $result['screen_resolution'];?></td>
                         </tr>
                         <tr>
-                            <td>Độ làm mới</td>
+                            <td>Tần số quét</td>
                             <td><?php echo $result['screen_refresh_rate'];?></td>
                         </tr>
                     </table>

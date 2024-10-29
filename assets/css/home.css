@@ -23,6 +23,8 @@ body {
 }
 
 .product-container {
+    justify-content: space-evenly;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: 12.5px;
@@ -63,10 +65,11 @@ body {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    color: black;
 }
 
-.product:hover {
-    color: #FF9999;
+.product h3:hover {
+    color: skyblue;
 }
 
 .product p {
@@ -180,10 +183,16 @@ body {
     transition: transform 0.5s ease;
 }
 
-.img-feature {
+.carousel-item {
     min-width: 100%;
+    min-height: 100%;
+}
+
+.img-feature {
+    width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
 }
 
 .control {
