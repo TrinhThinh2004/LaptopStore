@@ -93,7 +93,7 @@ if (isset($_POST["submit"])) {
     <button id="filterButton"><i class="fa-solid fa-filter"></i>&nbspLọc</button>
   </div>
   <div class="product-container">
-    <div class="product">
+    <div class="product" >
       <img
         src="https://cdn.tgdd.vn/Products/Images/44/313333/lenovo-ideapad-slim-3-15iah8-i5-83er00evn-thumb-600x600.jpg"
         alt="Laptop Lenovo Ideapad Slim 3 15IAH8 i5 12450H/16GB/512GB/Win11 (83ER000EVN)">
