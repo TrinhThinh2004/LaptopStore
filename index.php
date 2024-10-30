@@ -2,7 +2,7 @@
   <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
 
   <?php
-  include('includes/header.php');
+  include('includes/header.php'); 
   ?>
 
   <div class="main">

@@ -110,8 +110,8 @@ $query = mysqli_query($conn, $sql);
           <p class="price"><?php echo number_format($product['price'], 0, ',', '.'); ?>₫</p>
           <p class="discount"><?php echo number_format($product['price'] * 1.2, 0, ',', '.'); ?>₫</p>
           <div class="button-container">
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" style="display: inline;">
-              <input type="hidden" name="product_id" value="83ER000EVN">
+            <form action="payment.php" method="POST" style="display: inline;">
+              <input type="hidden" name="product_id" value="<?php echo $product['laptop_id']; ?>">
               <button type="submit" class="btn">Mua ngay</button>
             </form>
 

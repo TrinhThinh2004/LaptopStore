@@ -1,0 +1,126 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1200px;
+    margin:20px  auto;
+    background-color: #fff;
+    
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.product {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.product img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+.product-details {
+    flex-grow: 1;
+}
+.product-details h2 {
+    margin: 0;
+    font-size: 18px;
+}
+.product-details p {
+    margin: 5px 0;
+    color: #888;
+}
+.product-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    
+}
+.product-quantity input {
+    width: 40px;
+    text-align: center;
+    margin: 0 10px;
+}
+.product-price {
+    font-size: 18px;
+    color: #e60000;
+    
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group select, .form-group textarea {
+    max-width: 1200px;
+    font-family: Arial, sans-serif;
+    width: 98%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.form-group input[type="radio"] {
+    width: auto;
+    margin-right: 10px;
+}
+.form-group .radio-group {
+    display: flex;
+    align-items: center;
+}
+.form-group .radio-group label {
+    margin-right: 20px;
+}
+.form-group .note {
+    color: #888;
+    font-size: 12px;
+}
+.form-group .apply-coupon {
+    display: flex;
+    align-items: center;
+}
+.form-group .apply-coupon input {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+.form-group .apply-coupon button {
+    
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+   height: 42px;
+  
+   
+}
+.apply-coupon{
+    text-align: center;
+}
+.total-price {
+    text-align: right;
+    font-size: 18px;
+    color: #e60000;
+    margin-bottom: 20px;
+}
+
+
+
+
+.submit-button {
+    text-align: center;
+}
+.submit-button button {
+    padding: 15px 30px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
