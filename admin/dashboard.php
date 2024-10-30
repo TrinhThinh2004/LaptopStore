@@ -1,3 +1,8 @@
+<?php
+include_once("../includes/connect.php");
+?>
+
+
 <link rel="stylesheet" href="../assets/css/admin/dashboard.css">
 <link rel="stylesheet" href="../assets/css/base.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
@@ -57,27 +62,48 @@ include("header_admin.php");
                     <thead>
                         <tr>
                             <th><input type="checkbox"></th>
-                            <th>ID</th>
+                            <th>Tên tài khoản</th>
+                            <th>Mật khẩu</th>
+                            <th>Email</th>
                             <th>Họ tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
                             <th>Quyền hạn</th>
-                            <th>Hiển thị</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th><input type="checkbox"></th>
-                            <td>1</td>
-                            <td>Administrator</td>
-                            <td>Administrator</td>
-                            <td>Hiện</td>
-                            <td>
-                                <div class="action-buttons" style="justify-content: center; color: red; cursor:pointer">
-                                    <a href="#"><i class="fa-regular fa-pen-to-square"></i></a>
-                                    <a href="#" onclick="deleteUser(this)"><i class="fa-regular fa-circle-xmark"></i></a>
+                        <?php
+                        $sql = "SELECT username, password, email, full_name, phone_number, address, role FROM users";
+                        $result = $conn->query($sql);
+
+                        if ($result->num_rows > 0) {
+                            // Hiển thị dữ liệu trong bảng HTML
+                            while ($row = $result->fetch_assoc()) {
+                                echo "<tr>";
+                                echo "<th><input type='checkbox'></th>";
+                                echo "<td>" . htmlspecialchars($row['username']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['password']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['phone_number']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['address']) . "</td>";
+                                $role = $row['role'] == 0 ? "User" : "Admin";
+                                echo "<td>" . htmlspecialchars($role) . "</td>";
+                                echo "<td>
+                                <div class='action-buttons' style='justify-content: center; color: red; cursor:pointer'>
+                                    <a href='#'><i class='fa-regular fa-pen-to-square'></i></a>
+                                    <a href='#' onclick='deleteUser(this)'><i class='fa-regular fa-circle-xmark'></i></a>
                                 </div>
-                            </td>
-                        </tr>
+                            </td>";
+                                echo "</tr>";
+                            }
+                        } else {
+                            echo "<tr>
+                            <td colspan='6'>Không có dữ liệu</td>
+                        </tr>";
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -189,7 +215,9 @@ include("header_admin.php");
     }
 
     function deleteUser(anchorElement) {
+    if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
         var row = anchorElement.closest('tr');
         row.parentNode.removeChild(row);
     }
+}
 </script>
