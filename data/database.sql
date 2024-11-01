@@ -12,7 +12,9 @@ CREATE TABLE Users (
   phone_number VARCHAR(15),
   address VARCHAR(255),
   role TINYINT DEFAULT 0, -- 0: user, 1: admin
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  deleted TINYINT DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Laptops
@@ -32,7 +34,9 @@ CREATE TABLE Laptops (
   screen_refresh_rate VARCHAR(50), -- Tần số quét màn hình (ví dụ: 144Hz)
   price DECIMAL(15, 2) NOT NULL, -- Giá laptop (VNĐ)
   description TEXT, -- Mô tả thêm về laptop
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  deleted TINYINT DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Laptop_Images
@@ -47,7 +51,8 @@ CREATE TABLE Laptop_Images (
 CREATE TABLE Categories (
   category_id INT AUTO_INCREMENT PRIMARY KEY,
   category_name VARCHAR(50) NOT NULL UNIQUE,
-  description TEXT
+  description TEXT,
+  deleted TINYINT DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Bảng Laptop_Categories
