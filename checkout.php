@@ -5,67 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/base.css">
-    <style>
-        .chekout-container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .content-box {
-            width: 580px;
-            min-height: 100vh;
-        }
-
-        h2 {
-            padding: 10px;
-        }
-
-        input[type="text"],
-        input[type="email"] {
-            width: 100%;
-            padding: 10px;
-        }
-
-        table {
-            text-align: center;
-            width: 100%;
-            border: 1px solid black;
-        }
-
-        img {
-            max-width: 80px;
-            height: auto;
-        }
-
-        .product-content {
-            width: 380px;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        .product-content h3 {
-            width: 300px;
-            word-wrap: break-word;
-            white-space: normal;
-            overflow-wrap: break-word;
-            margin: 5px 0 0 0;
-            text-align: left;
-        }
-
-        .total-price {
-            text-align: right;
-        }
-
-        .btn {
-            text-align: center;
-            font-size: 30px;
-            background-color: rgb(16, 158, 40);
-            color: white;
-            border: none;
-            border-radius: 20px;
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/checkout.css">
 </head>
 
 <body>
@@ -74,13 +14,13 @@
             <div class="content-box">
                 <h2>Thông tin người nhận</h2>
                 <h3>Họ tên người nhận</h3>
-                <input type="text">
+                <input class="checkout-input" type="text">
                 <h3>Email</h3>
-                <input type="email">
+                <input class="checkout-input" type="email">
                 <h3>Số điện thoại</h3>
-                <input type="text">
+                <input class="checkout-input" type="text">
                 <h3>Địa chỉ</h3>
-                <input type="text">
+                <input class="checkout-input" type="text">
                 <div class="payment-type">
                     <h3>Phương thức thanh toán: </h3>
                     <input type="radio" id="payment1" name="payment" value="Tiền mặt">
@@ -104,7 +44,7 @@
                             <h3>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</h3>
                         </td>
                         <td>1</td>
-                        <td>trăm củ</td>
+                        <td>trăm củaaaaaaaaaa</td>
                         <td>tỷ</td>
                     </tbody>
                 </table>

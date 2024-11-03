@@ -20,9 +20,12 @@
             break;
           case 'cart':
             include('cart.php');
-          break;
+            break;
           case 'payment':
             include('payment.php');
+            break;
+          case 'checkout':
+            include('checkout.php');
             break;
           case 'login':
             include('login.php');

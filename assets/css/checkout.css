@@ -1,0 +1,62 @@
+.chekout-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content-box {
+    width: 580px;
+    min-height: 100vh;
+}
+
+h2 {
+    padding: 20px 0;
+}
+
+h3 {
+    padding: 10px 0;
+}
+
+.checkout-input {
+    width: 100%;
+    padding: 10px;
+}
+
+table {
+    text-align: center;
+    width: 100%;
+    border: 1px solid black;
+}
+
+img {
+    max-width: 80px;
+    height: auto;
+}
+
+.product-content {
+    width: 380px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.product-content h3 {
+    width: 300px;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    margin: 5px 0 0 0;
+    text-align: left;
+}
+
+.total-price {
+    text-align: right;
+}
+
+.btn {
+    text-align: center;
+    font-size: 30px;
+    background-color: rgb(16, 158, 40);
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px;
+}
