@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 include_once("includes/connect.php");
 
 $sql =
@@ -12,6 +13,32 @@ ORDER BY laptops.laptop_id DESC
 LIMIT 10";
 
 $query = mysqli_query($conn, $sql);
+
+if (isset($_POST['add_to_cart'])) {
+  $user_id = $_SESSION['user_id'];
+  $laptop_id = $_POST['laptop_id'];
+
+  $check_cart = "SELECT quantity FROM Cart WHERE user_id = $user_id AND laptop_id = $laptop_id";
+  $result_check = mysqli_query($conn, $check_cart);
+
+  if (mysqli_num_rows($result_check) > 0) {
+    $update_quantity = "UPDATE Cart SET quantity = quantity + 1 WHERE user_id = $user_id AND laptop_id = $laptop_id";
+    mysqli_query($conn, $update_quantity);
+  } else {
+    $add = "INSERT INTO Cart (user_id, laptop_id, quantity) VALUES ($user_id, $laptop_id, 1)";
+    mysqli_query($conn, $add);
+  }
+
+  $count_query = "SELECT COUNT(DISTINCT laptop_id) as unique_products FROM Cart WHERE user_id = $user_id";
+  $result_count = mysqli_query($conn, $count_query);
+  $row_count = mysqli_fetch_assoc($result_count);
+  $quantity = $row_count['unique_products'];
+
+  $_SESSION['quantity'] = $quantity;
+
+  header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
 
 ?>
 
@@ -116,9 +143,9 @@ $query = mysqli_query($conn, $sql);
               <button type="submit" class="btn">Mua ngay</button>
             </form>
 
-            <form action="index.php?act=cart1&id=<?php echo $product['laptop_id']; ?>" method="POST" style="display: inline;">
-              <input type="hidden" name="product_id" value="<?php echo $product['laptop_id']; ?>">
-              <button type="submit" class="btn">Giỏ hàng</button>
+            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" style="display: inline;">
+              <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
+              <button type="submit" class="btn" name = "add_to_cart">Giỏ hàng</button>
             </form>
 
           </div>

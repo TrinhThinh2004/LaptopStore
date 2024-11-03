@@ -4,10 +4,14 @@ session_start();
 include('connect.php');
 $username = "Đăng nhập";
 $link_user = "login.php";
+$quantity = 0;
 if (isset($_SESSION["username"])) {
     $link_user = "index.php?act=user";
     $username = "Xin chào, " . $_SESSION["username"];
+    $quantity = isset($_SESSION['quantity']) ? $_SESSION['quantity'] : 0;
 }
+
+
 ?>
 
 
@@ -28,7 +32,7 @@ if (isset($_SESSION["username"])) {
                 </li>
 
                 <li class="nav-item text-icon">
-                    <a href="index.php?act=cart1"><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
+                    <a href="index.php?act=cart1"><i class="fa-solid fa-cart-shopping icon"></i><span class="quantity"><?php echo $quantity; ?></span></a>
 
                 </li>
                 <li class="nav-item text-icon">

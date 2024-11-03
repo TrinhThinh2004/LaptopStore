@@ -12,7 +12,7 @@ html,
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
-    
+
 }
 
 
@@ -20,7 +20,7 @@ header {
     height: 60px;
     background-color: #4CAF50;
     color: white;
-    position:fixed;
+    position: fixed;
     width: 100vw;
     z-index: 1000;
 }
@@ -66,6 +66,18 @@ nav ul li a {
     padding: 7px 13px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.quantity {
+    text-align: center;
+    display: inline-block;
+    width: 25px !important;
+    height: 25px;
+    line-height: 25px;
+    color: white;
+    background-color: red;
+    border-radius: 50%;
+    position: relative;
 }
 
 .search-input {

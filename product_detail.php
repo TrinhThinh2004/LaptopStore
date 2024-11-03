@@ -78,7 +78,8 @@ while ($row = mysqli_fetch_array($query)) {
                         <?php } ?>
                         <tr>
                             <td>Bộ nhớ</td>
-                            <td><?php echo $result['storage']. "GB";?></td>
+                            <td><?php if($result['storage'] < 1000) echo $result['storage']. "GB";
+                            else echo $result['storage']/1024 . "TB"; ?></td>
                         </tr>
                         <tr>
                             <td>Loại lưu trữ</td>
