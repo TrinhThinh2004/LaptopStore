@@ -15,8 +15,17 @@
           case 'user':
             include('user.php');
             break;
+          case 'cart1':
+            include('cart1.php');
+            break;
           case 'cart':
             include('cart.php');
+          break;
+          case 'payment':
+            include('payment.php');
+            break;
+          case 'login':
+            include('login.php');
             break;
 
           default: include('home.php');

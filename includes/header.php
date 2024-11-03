@@ -28,7 +28,7 @@ if (isset($_SESSION["username"])) {
                 </li>
 
                 <li class="nav-item text-icon">
-                    <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
+                    <a href="index.php?act=cart1"><i class="fa-solid fa-cart-shopping icon"></i>Giỏ hàng</a>
 
                 </li>
                 <li class="nav-item text-icon">

@@ -7,17 +7,17 @@ if (isset($_SESSION["success_message"])) {
     $success_message = $_SESSION['success_message'];
     unset($_SESSION['success_message']);
 }
-
 if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     if (isset($username) && isset($password)) {
-        $sql = "SELECT * FROM users where username='$username' AND password='$password'";
+        $sql = "SELECT * FROM users where username='$username' AND password='$password' AND deleted=0";
         $query = mysqli_query($conn, $sql);
         $row = mysqli_num_rows($query);
         if ($row > 0) {
             $user = mysqli_fetch_assoc($query);
             $_SESSION["username"] = $username;
+            $_SESSION["user_id"] = $user["user_id"];
             $_SESSION["role"] = $user["role"];
             if ($user["role"] == "1") {
                 header('location: admin/dashboard.php');
@@ -30,6 +30,7 @@ if (isset($_POST["submit"])) {
         }
     }
 }
+
 ?>
     <link rel="stylesheet" href="assets/css/login.css">
 

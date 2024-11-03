@@ -92,7 +92,6 @@ CREATE TABLE Cart (
   user_id INT,
   laptop_id INT,
   quantity INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
   FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE,

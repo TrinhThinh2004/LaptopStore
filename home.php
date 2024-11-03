@@ -6,6 +6,7 @@ $sql =
   "SELECT laptops.laptop_id, laptops.price, laptops.description, MAX(laptop_images.image_url) AS image_url
 FROM laptops
 LEFT JOIN laptop_images ON laptops.laptop_id = laptop_images.laptop_id
+WHERE laptops.deleted = 0
 GROUP BY laptops.laptop_id DESC
 ORDER BY laptops.laptop_id DESC
 LIMIT 10";
@@ -115,9 +116,8 @@ $query = mysqli_query($conn, $sql);
               <button type="submit" class="btn">Mua ngay</button>
             </form>
 
-            <form action="cart.php" method="POST" style="display: inline;">
+            <form action="index.php?act=cart1&id=<?php echo $product['laptop_id']; ?>" method="POST" style="display: inline;">
               <input type="hidden" name="product_id" value="<?php echo $product['laptop_id']; ?>">
-              <input type="hidden" name="price" value="<?php echo $product['price']; ?>">
               <button type="submit" class="btn">Giỏ hàng</button>
             </form>
 
