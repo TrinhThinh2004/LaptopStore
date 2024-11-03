@@ -23,17 +23,14 @@
         $user_id = $_SESSION['user_id'];
         $laptop_id = intval($_GET['remove_id']); // Lấy laptop_id từ GET và chuyển đổi thành số nguyên
     
-        // Xóa sản phẩm khỏi bảng Cart
         $delete_query = "DELETE FROM Cart WHERE user_id = $user_id AND laptop_id = $laptop_id";
         mysqli_query($conn, $delete_query);
     
-        // Cập nhật lại số lượng sản phẩm khác nhau trong giỏ hàng
         $count_query = "SELECT COUNT(DISTINCT laptop_id) as unique_products FROM Cart WHERE user_id = $user_id";
         $result_count = mysqli_query($conn, $count_query);
         $row_count = mysqli_fetch_assoc($result_count);
         $_SESSION['quantity'] = $row_count['unique_products'];
     
-        // Điều hướng lại trang hiện tại để tránh lặp lại thao tác xóa nếu người dùng reload trang
         header("Location: index.php?act=cart1");
         exit;
     }
@@ -70,7 +67,7 @@
                         <tr>
                             <td><img src="<?php echo $row['image_url'] ?>" alt=""></td>
                             <td><?php echo $row['description'] ?></td>
-                            <td><?php echo $row['quantity'] ?></td>
+                            <td><input class='quantity-input' type="number" value="<?php echo $row['quantity'] ?>"></td>
                             <td><?php echo $row['price'] ?></td>
                             <td><?php echo date("H:i d/m/Y", strtotime($row["created_at"])) ?></td>
                             <td><a href = "index.php?act=cart1&remove_id=<?php echo $row['laptop_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?');">Xóa</a>
