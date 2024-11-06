@@ -6,7 +6,7 @@ $username = "";
 $link_user = "login.php";
 if (isset($_SESSION["username"])) {
     $link_user = "../index.php?act=user";
-    $username = "Xin chào, Quản trị viên " . $_SESSION["username"];
+    $username = "Xin chào, " . $_SESSION["username"];
 }
 
 // Kiểm tra role == 1 thì cho vô quản trị
