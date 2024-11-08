@@ -1,7 +1,7 @@
 
 function updateQuantity(laptop_id, quantity) {
     $.ajax({
-        url: 'index.php?act=cart1',
+        url: 'index.php?act=cart',
         type: 'POST',
         data: {
             action: 'update_quantity',

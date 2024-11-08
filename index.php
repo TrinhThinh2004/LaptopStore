@@ -17,11 +17,8 @@
       case 'user':
         include('user.php');
         break;
-      case 'cart1':
-        include('cart1.php');
-        break;
-      case 'payment':
-        include('payment.php');
+      case 'cart':
+        include('cart.php');
         break;
       case 'checkout':
         include('checkout.php');

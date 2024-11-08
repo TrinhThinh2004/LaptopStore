@@ -32,7 +32,7 @@ if (isset($_SESSION["username"])) {
                 </li>
 
                 <li class="nav-item text-icon">
-                    <a href="index.php?act=cart1"><i class="fa-solid fa-cart-shopping icon"></i><span class="quantity"><?php echo $quantity; ?></span></a>
+                    <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping icon"></i><span class="quantity"><?php echo $quantity; ?></span></a>
 
                 </li>
                 <li class="nav-item text-icon">
@@ -46,16 +46,14 @@ if (isset($_SESSION["username"])) {
             <ul>
                 <li class="menu-item"><input type="text" placeholder="Tìm kiếm sản phẩm"></li>
                 <li class="menu-item"><a href="index.php">TRANG CHỦ</a></li>
-                <li class="menu-item"><a href="cart.php">GIỎ HÀNG</a></li>
+                <li class="menu-item"><a href="index.php?act=cart">GIỎ HÀNG</a></li>
                 <li class="menu-item"><a href=<?php echo $link_user; ?>><?php echo $username; ?></a></li>
             </ul>
         </div>
     </div>
 </header>
 <script>
-    document.querySelector('.menu-icon').addEventListener('click', function () {
+    document.querySelector('.menu-icon').addEventListener('click', function() {
         document.querySelector('.sub-menu').classList.toggle('active');
     });
 </script>
-
-

@@ -1,98 +1,110 @@
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/cart.css">
+
 <?php
 ob_start();
-include_once("includes/connect.php");
+include("includes/connect.php");
 
-
-if (isset($_GET['delete_id'])) {
-    $delete_id = intval($_GET['delete_id']);
-    $delete_sql = "DELETE FROM Cart WHERE cart_id = ?";
-    $stmt = $conn->prepare($delete_sql);
-    $stmt->bind_param("i", $delete_id);
-    $stmt->execute();
- 
+if (!$_SESSION['username'] && !$_SESSION['user_id']) {
+    header('location: login.php');
+    exit;
 }
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['product_id'])) {
-    $product_id = intval($_POST['product_id']);
-    $price = floatval($_POST['price']);
-    $user_id = 1; 
+$user_id = $_SESSION['user_id'];
 
-   
-    $check_sql = "SELECT * FROM Cart WHERE laptop_id = $product_id AND user_id = $user_id";
-    $check_result = $conn->query($check_sql);
+$sql = "SELECT L.laptop_id, L.brand, L.model, L.description, L.price, C.quantity, 
+    MAX(I.image_url) AS image_url, C.created_at
+    FROM Cart C
+    JOIN Laptops L ON C.laptop_id = L.laptop_id
+    LEFT JOIN Laptop_Images I ON L.laptop_id = I.laptop_id
+    WHERE C.user_id = '$user_id'
+    GROUP BY L.laptop_id, L.brand, L.model, L.description, L.price, C.quantity";
 
-    if ($check_result->num_rows > 0) {
-        
-        $update_sql = "UPDATE Cart SET quantity = quantity + 1 WHERE laptop_id = $product_id AND user_id = $user_id";
-        $conn->query($update_sql);
+$result = mysqli_query($conn, $sql);
+$num = mysqli_num_rows($result);
+
+if (isset($_POST['action']) && $_POST['action'] == 'update_quantity') {
+    $laptop_id = $_POST['laptop_id'];
+    $quantity = $_POST['quantity'];
+    $update_query = "UPDATE Cart SET quantity = $quantity WHERE user_id = $user_id AND laptop_id = $laptop_id";
+    if (mysqli_query($conn, $update_query)) {
+        // Recalculate the total price after updating quantity
+        $total_query = "SELECT SUM(L.price * C.quantity) AS total_price 
+                        FROM Cart C 
+                        JOIN Laptops L ON C.laptop_id = L.laptop_id 
+                        WHERE C.user_id = $user_id";
+        $result_total = mysqli_query($conn, $total_query);
+        $row_total = mysqli_fetch_assoc($result_total);
+        $total_price = $row_total['total_price'];
+
+        // Return success response with new total price
+        echo json_encode([
+            'success' => true,
+            'total_price' => $total_price
+        ]);
     } else {
-      
-        $insert_sql = "INSERT INTO Cart (user_id, laptop_id, quantity, price, created_at) 
-                       VALUES ($user_id, $product_id, 1, $price, NOW())"; 
-        $conn->query($insert_sql);
+        echo json_encode(['success' => false]);
     }
+    exit; // End script here for AJAX requests
 }
 
+if (isset($_GET['remove_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $laptop_id = $_GET['remove_id'];
 
+    $delete_query = "DELETE FROM Cart WHERE user_id = $user_id AND laptop_id = $laptop_id";
+    mysqli_query($conn, $delete_query);
 
-$sql =
-"SELECT c.cart_id, c.user_id, c.quantity, c.price, c.created_at, 
-       l.laptop_id, l.description, l.price AS laptop_price
-FROM Cart c
-JOIN Laptops l ON c.laptop_id = l.laptop_id
-ORDER BY c.cart_id DESC";
+    $count_query = "SELECT COUNT(DISTINCT laptop_id) as unique_products FROM Cart WHERE user_id = $user_id";
+    $result_count = mysqli_query($conn, $count_query);
+    $row_count = mysqli_fetch_assoc($result_count);
+    $_SESSION['quantity'] = $row_count['unique_products'];
 
-$result = $conn->query($sql);
-
+    header("Location: index.php?act=cart");
+    exit;
+}
 ?>
 
-<!DOCTYPE html>
-<html lang="vi">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giỏ hàng</title>
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/admin/cart.css">
-</head>
-
-<body>
-    <div class="main">
-        <table>
-            <thead>
-                <tr>
-                    <th>ID Cart</th>
-                    <th>ID Người dùng</th>
-                    <th>Số lượng</th>
-                    <th>Đơn giá</th>
-                    <th>Thêm vào lúc</th>
-                    <th>Mô tả Laptop</th>
-                    <th>Hành động</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row["cart_id"] . "</td>";
-                        echo "<td>" . $row["user_id"] . "</td>";
-                        echo "<td>" . $row["quantity"] . "</td>";
-                        echo "<td>" . number_format($row["price"], 0, ',', '.') . " VND</td>"; 
-                        echo "<td>" . date("H:i d/m/Y", strtotime($row["created_at"])) . "</td>"; 
-                        echo "<td>" . htmlspecialchars($row["description"]) . "</td>";
-                        echo "<td><a href='?delete_id=" . $row["cart_id"] . "' onclick='return confirm(\"Bạn có chắc chắn muốn xóa không?\");'>Xóa</a></td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='7'>Không có sản phẩm trong giỏ hàng.</td></tr>";
-                }
-
-                $conn->close();
-                ?>
-            </tbody>
-        </table>
-    </div>
-</body>
-
-</html>
+<div class="main">
+    <table>
+        <thead>
+            <tr>
+                <th>Ảnh</th>
+                <th>Mô tả Laptop</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thêm vào lúc</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $total_price = 0;
+            if ($num > 0) {
+                while ($row = mysqli_fetch_array($result)) {
+                    $total_price += ($row['quantity'] * $row['price'])
+            ?>
+                    <tr>
+                        <td><img src="<?php echo $row['image_url'] ?>" alt=""></td>
+                        <td><?php echo $row['description'] ?></td>
+                        <td><input class='quantity-input' type="number" value="<?php echo $row['quantity'] ?>"
+                                onchange="updateQuantity(<?php echo $row['laptop_id'] ?>, this.value)"></td>
+                        <td><?php echo $row['price'] ?></td>
+                        <td><?php echo date("H:i d/m/Y", strtotime($row["created_at"])) ?></td>
+                        <td><a href="index.php?act=cart&remove_id=<?php echo $row['laptop_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?');">Xóa</a>
+                    </tr>
+            <?php }
+            } else {
+                echo "<tr><td colspan='6'>Không có sản phẩm trong giỏ hàng.</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+    if ($num > 0) { ?>
+        <div class="checkout-box">
+            <h2>Tổng tiền: <span id="total-price"><?php echo $total_price; ?></span></h2>
+            <button class="btn">Mua ngay</button>
+        </div>
+    <?php } ?>
+</div>

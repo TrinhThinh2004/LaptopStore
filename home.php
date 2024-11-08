@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 include_once("includes/connect.php");
 
 $sql =
@@ -145,12 +144,12 @@ if (isset($_POST['add_to_cart'])) {
           <p class="price"><?php echo number_format($product['price'], 0, ',', '.'); ?>₫</p>
           <p class="discount"><?php echo number_format($product['price'] * 1.2, 0, ',', '.'); ?>₫</p>
           <div class="button-container">
-            <form action="payment.php" method="POST" style="display: inline;">
-              <input type="hidden" name="product_id" value="<?php echo $product['laptop_id']; ?>">
-              <button type="submit" class="btn">Mua ngay</button>
+            <form action="index.php?act=checkout" method="POST" style="display: inline;">
+              <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
+              <button type="submit" class="btn" name="buy">Mua ngay</button>
             </form>
 
-            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" style="display: inline;">
+            <form action="" method="POST" style="display: inline;">
               <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
               <button type="submit" class="btn" name="add_to_cart">Giỏ hàng</button>
             </form>
