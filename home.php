@@ -15,8 +15,13 @@ LIMIT 10";
 $query = mysqli_query($conn, $sql);
 
 if (isset($_POST['add_to_cart'])) {
-  $user_id = $_SESSION['user_id'];
-  $laptop_id = $_POST['laptop_id'];
+  if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+  } else {
+    $user_id = $_SESSION['user_id'];
+  }
+  $laptop_id = intval($_POST['laptop_id']);
 
   $check_cart = "SELECT quantity FROM Cart WHERE user_id = $user_id AND laptop_id = $laptop_id";
   $result_check = mysqli_query($conn, $check_cart);
@@ -29,15 +34,17 @@ if (isset($_POST['add_to_cart'])) {
     mysqli_query($conn, $add);
   }
 
-  $count_query = "SELECT COUNT(DISTINCT laptop_id) as unique_products FROM Cart WHERE user_id = $user_id";
+  $count_query = "SELECT COUNT(DISTINCT laptop_id) AS unique_products FROM Cart WHERE user_id = $user_id";
   $result_count = mysqli_query($conn, $count_query);
-  $row_count = mysqli_fetch_assoc($result_count);
-  $quantity = $row_count['unique_products'];
-
-  $_SESSION['quantity'] = $quantity;
+  if ($result_count) {
+    $row_count = mysqli_fetch_assoc($result_count);
+    $_SESSION['quantity'] = $row_count['unique_products'];
+  } else {
+    die("Error fetching cart count: " . mysqli_error($conn));
+  }
 
   header("Location: " . $_SERVER['PHP_SELF']);
-    exit;
+  exit;
 }
 
 ?>
@@ -145,7 +152,7 @@ if (isset($_POST['add_to_cart'])) {
 
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" style="display: inline;">
               <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
-              <button type="submit" class="btn" name = "add_to_cart">Giỏ hàng</button>
+              <button type="submit" class="btn" name="add_to_cart">Giỏ hàng</button>
             </form>
 
           </div>

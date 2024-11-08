@@ -18,6 +18,15 @@ if (isset($_POST["submit"])) {
             $user = mysqli_fetch_assoc($query);
             $_SESSION["username"] = $username;
             $_SESSION["user_id"] = $user["user_id"];
+            $user_id = $user["user_id"];
+
+            // Tạo số trên giỏ hàng trên thanh header
+            $count_query = "SELECT COUNT(DISTINCT laptop_id) AS unique_products FROM Cart WHERE user_id = $user_id";
+            $result_count = mysqli_query($conn, $count_query);
+            $row_count = mysqli_fetch_assoc($result_count);
+            $_SESSION['quantity'] = $row_count['unique_products'];
+
+            // Lấy role và chuyển đến trang tương ứng
             $_SESSION["role"] = $user["role"];
             if ($user["role"] == "1") {
                 header('location: admin/dashboard.php');
@@ -32,37 +41,37 @@ if (isset($_POST["submit"])) {
 }
 
 ?>
-    <link rel="stylesheet" href="assets/css/login.css">
+<link rel="stylesheet" href="assets/css/login.css">
 
-    <!-- <?php
-    if (isset($_POST[$success_message]) && $success_message != '') {
-        echo "<div style='color: green; text-align: center;'>$success_message</div>";
-    }
-    ?> -->
-    <div class="login-container">
-        Vô admin:
-        username: admin, password: admin <br>
-        Vô user:
-        username: user1, password: user1
-        username: user2, password: user2
+<!-- <?php
+        if (isset($_POST[$success_message]) && $success_message != '') {
+            echo "<div style='color: green; text-align: center;'>$success_message</div>";
+        }
+        ?> -->
+<div class="login-container">
+    Vô admin:
+    username: admin, password: admin <br>
+    Vô user:
+    username: user1, password: user1
+    username: user2, password: user2
 
-        <h2>Đăng Nhập</h2>
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-            <label for="username">Tên đăng nhập</label>
-            <input type="text" id="username" name="username" required>
+    <h2>Đăng Nhập</h2>
+    <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" name="username" required>
 
-            <label for="password">Mật khẩu</label>
-            <input type="password" id="password" name="password" required>
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" required>
 
-            <button type="submit" name="submit">Đăng Nhập</button>
-            <?php
-            if (isset($message) && $message != '') {
-                echo "<div style='color: red; text-align: center; margin-top:20px'>" . $message . "</div>";
-            }
-            ?>
+        <button type="submit" name="submit">Đăng Nhập</button>
+        <?php
+        if (isset($message) && $message != '') {
+            echo "<div style='color: red; text-align: center; margin-top:20px'>" . $message . "</div>";
+        }
+        ?>
 
-        </form>
-        <div class="signup-link">
-            Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a>
-        </div>
+    </form>
+    <div class="signup-link">
+        Chưa có tài khoản? <a href="register.php">Đăng ký ngay</a>
     </div>
+</div>
