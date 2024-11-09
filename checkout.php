@@ -1,23 +1,27 @@
 <?php
+ob_start();
 include("includes/connect.php");
 
 $total_price = 0;
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+    $sql_user = "SELECT * FROM users where user_id = $user_id";
+    $result = mysqli_query($conn, $sql_user);
+    $user = mysqli_fetch_array($result);
+} else {
+    $user = [
+        'full_name' => '',
+        'email' => '',
+        'phone_number' => '',
+        'address' => ''
+    ];
+}
 
-if (isset($_POST['buy'])) {
-    $laptop_id = $_POST['laptop_id'];
-    if (isset($_SESSION['user_id'])) {
-        $user_id = $_SESSION['user_id'];
-        $sql_user = "SELECT * FROM users where user_id = $user_id";
-        $result = mysqli_query($conn, $sql_user);
-        $user = mysqli_fetch_array($result);
-    } else {
-        $user = [
-            'full_name' => '',
-            'email' => '',
-            'phone_number' => '',
-            'address' => ''
-        ];
-    }
+$laptops = [];
+
+
+if (isset($_GET['buy'])) {
+    $laptop_id = $_GET['laptop_id'];
 
     $sql_laptop =
         "SELECT laptops.laptop_id, laptops.price, laptops.description, 
@@ -36,14 +40,7 @@ if (isset($_POST['buy'])) {
         'image_url' => $row['image_url'],
         'quantity' => '1'
     ];
-}
-
-if (isset($_POST['buy-cart'])) {
-    $user_id = $_SESSION['user_id'];
-    $sql_user = "SELECT * FROM users where user_id = $user_id";
-    $result = mysqli_query($conn, $sql_user);
-    $user = mysqli_fetch_array($result);
-
+} else {
     $sql_laptop =
         "SELECT L.laptop_id, L.description, L.price, C.quantity, 
         MAX(I.image_url) AS image_url
@@ -73,16 +70,17 @@ if (isset($_POST['buy-cart'])) {
 <div class="main">
     <div class="chekout-container">
         <div class="content-box">
-            <form action="" method="POST" name="info">
+            <form action="index.php?act=success" method="POST" name="info" id="info">
                 <h2>Thông tin người nhận</h2>
                 <h3>Họ tên người nhận</h3>
-                <input class="checkout-input" type="text" value="<?php echo $user['full_name'] ?>">
+                <input class="checkout-input" type="text" name="full_name" value="<?php echo $user['full_name'] ?>" required>
                 <h3>Email</h3>
-                <input class="checkout-input" type="email" value="<?php echo $user['email'] ?>">
+                <input class="checkout-input" type="email" name="email" value="<?php echo $user['email'] ?>" required>
                 <h3>Số điện thoại</h3>
-                <input class="checkout-input" type="text" value="<?php echo $user['phone_number'] ?>">
+                <input class="checkout-input" type="text" name="phone_number" value="<?php echo $user['phone_number'] ?>" required>
                 <h3>Địa chỉ</h3>
-                <input class="checkout-input" type="text" value="<?php echo $user['address'] ?>">
+                <input class="checkout-input" type="text" name="address" value="<?php echo $user['address'] ?>" required>
+                <input type="hidden" name="total_price" value="<?php echo $total_price; ?>">
             </form>
             <!-- <div class="payment-type">
                 <h3>Phương thức thanh toán: </h3>
@@ -114,9 +112,8 @@ if (isset($_POST['buy-cart'])) {
                 </tbody>
             </table>
             <div class="confirm">
-                <h2 class="total-price">Tổng tiền: <?php echo number_format($total_price, 0, ',', '.'); ?>đ
-                </h2>
-                <button class="btn" name="buy">Đặt hàng</button>
+                <h2 class="total-price">Tổng tiền: <?php echo number_format($total_price, 0, ',', '.'); ?>đ</h2>
+                <button class="btn" form="info" name="confirm" type="submit">Đặt hàng</button>
             </div>
         </div>
     </div>

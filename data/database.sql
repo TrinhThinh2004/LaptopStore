@@ -72,7 +72,7 @@ CREATE TABLE Orders (
   order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   status TINYINT DEFAULT 1, -- 1: pending, 2: completed, 3: cancelled
   payment_method TINYINT NOT NULL, -- 1: cash, 2: bank transfer (QR)
-  email VARCHAR(100) NOT NULL UNIQUE,
+  email VARCHAR(100) NOT NULL,
   full_name VARCHAR(100),
   phone_number VARCHAR(15),
   address VARCHAR(255) NOT NULL,

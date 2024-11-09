@@ -3,9 +3,9 @@
   <script src="assets/js/jquery-3.7.1.min.js"></script>
   <script src="assets/js/handle.js"></script>
 
-  <?php
-  include('includes/header.php');
-  ?>
+  <!-- <?php
+        include('includes/header.php');
+        ?> -->
 
   <div class="main">
     <?php
@@ -23,8 +23,14 @@
       case 'checkout':
         include('checkout.php');
         break;
+      case 'success':
+        include('success.php');
+        break;
       case 'login':
         include('login.php');
+        break;
+      case 'order':
+        include('order.php');
         break;
 
       default:

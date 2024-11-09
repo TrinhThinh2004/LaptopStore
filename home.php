@@ -144,7 +144,8 @@ if (isset($_POST['add_to_cart'])) {
           <p class="price"><?php echo number_format($product['price'], 0, ',', '.'); ?>₫</p>
           <p class="discount"><?php echo number_format($product['price'] * 1.2, 0, ',', '.'); ?>₫</p>
           <div class="button-container">
-            <form action="index.php?act=checkout" method="POST" style="display: inline;">
+            <form action="index.php" method="GET" style="display: inline;">
+              <input type="hidden" name="act" value="checkout">
               <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
               <button type="submit" class="btn" name="buy">Mua ngay</button>
             </form>

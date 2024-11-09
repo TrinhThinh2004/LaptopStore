@@ -3,4 +3,5 @@
 
 <div class="main">
     <a href="logout.php">Đăng xuất</a>
+    <a href="index.php?act=order">Đơn hàng</a>
 </div>

@@ -45,7 +45,7 @@ td {
 
 img {
     max-width: 80px;
-    height: auto;
+    height: 55px;
 }
 
 h3 {
@@ -72,15 +72,6 @@ input[type=number] {
     text-align: right;
 }
 
-.btn {
-    text-align: center;
-    font-size: 30px;
-    background-color: rgb(16, 158, 40);
-    color: white;
-    outline: none;
-    border-radius: 20px;
-    padding: 10px;
-}
 
 .confirm {
     display: flex;

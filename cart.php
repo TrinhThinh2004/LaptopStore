@@ -91,7 +91,7 @@ if (isset($_GET['remove_id'])) {
                                 onchange="updateQuantity(<?php echo $row['laptop_id'] ?>, this.value)"></td>
                         <td><?php echo $row['price'] ?></td>
                         <td><?php echo date("H:i d/m/Y", strtotime($row["created_at"])) ?></td>
-                        <td><a href="index.php?act=cart&remove_id=<?php echo $row['laptop_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?');">Xóa</a>
+                        <td><a class="remove" href="index.php?act=cart&remove_id=<?php echo $row['laptop_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?');">Xóa</a>
                     </tr>
             <?php }
             } else {
@@ -104,9 +104,7 @@ if (isset($_GET['remove_id'])) {
     if ($num > 0) { ?>
         <div class="checkout-box">
             <h2>Tổng tiền: <span id="total-price"><?php echo $total_price; ?></span></h2>
-            <form action="index.php?act=checkout" method="POST">
-                <button type="submit" class="btn" name="buy-cart">Mua ngay</button>
-            </form>
+            <button type="submit" class="btn" name="buy-cart" onclick="location.href='index.php?act=checkout'">Mua ngay</button>
         </div>
     <?php } ?>
 </div>
