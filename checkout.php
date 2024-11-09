@@ -1,9 +1,10 @@
 <?php
 include("includes/connect.php");
 
+$total_price = 0;
+
 if (isset($_POST['buy'])) {
     $laptop_id = $_POST['laptop_id'];
-
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
         $sql_user = "SELECT * FROM users where user_id = $user_id";
@@ -19,13 +20,50 @@ if (isset($_POST['buy'])) {
     }
 
     $sql_laptop =
-        "SELECT laptops.laptop_id, laptops.price, laptops.description, MAX(laptop_images.image_url) AS image_url
+        "SELECT laptops.laptop_id, laptops.price, laptops.description, 
+        MAX(laptop_images.image_url) AS image_url
         FROM laptops
         LEFT JOIN laptop_images ON laptops.laptop_id = laptop_images.laptop_id
         WHERE laptops.laptop_id = $laptop_id";
 
     $result_laptop = mysqli_query($conn, $sql_laptop);
-    $product = mysqli_fetch_array($result_laptop);
+    $row = mysqli_fetch_assoc($result_laptop);
+    $total_price += $row['price'];
+    $laptops[] = [
+        'id' => $row['laptop_id'],
+        'price' => $row['price'],
+        'description' => $row['description'],
+        'image_url' => $row['image_url'],
+        'quantity' => '1'
+    ];
+}
+
+if (isset($_POST['buy-cart'])) {
+    $user_id = $_SESSION['user_id'];
+    $sql_user = "SELECT * FROM users where user_id = $user_id";
+    $result = mysqli_query($conn, $sql_user);
+    $user = mysqli_fetch_array($result);
+
+    $sql_laptop =
+        "SELECT L.laptop_id, L.description, L.price, C.quantity, 
+        MAX(I.image_url) AS image_url
+        FROM Cart C
+        JOIN Laptops L ON C.laptop_id = L.laptop_id
+        LEFT JOIN Laptop_Images I ON L.laptop_id = I.laptop_id
+        WHERE C.user_id = $user_id
+        GROUP BY L.laptop_id,L.description, L.price, C.quantity";
+
+    $result_laptop = mysqli_query($conn, $sql_laptop);
+    while ($row = mysqli_fetch_assoc($result_laptop)) {
+        $total_price += $row['price'] * $row['quantity'];
+        $laptops[] = [
+            'id' => $row['laptop_id'],
+            'price' => $row['price'],
+            'description' => $row['description'],
+            'image_url' => $row['image_url'],
+            'quantity' => $row['quantity']
+        ];
+    }
 }
 ?>
 
@@ -63,16 +101,21 @@ if (isset($_POST['buy'])) {
                     <th>Giá</th>
                 </thead>
                 <tbody>
-                    <td class="product-content">
-                        <img src="<?php echo $product['image_url'] ?>" alt="<?php echo $product['description'] ?>">
-                        <h3 class="text-clamp"><?php echo $product['description'] ?></h3>
-                    </td>
-                    <td><input type="number" value="1"></td>
-                    <td><?php echo number_format($product['price'], 0, ',', '.'); ?>đ</td>
+                    <?php foreach ($laptops as $product) { ?>
+                        <tr>
+                            <td class="product-content">
+                                <img src="<?php echo $product['image_url'] ?>" alt="<?php echo $product['description'] ?>">
+                                <h3 class="text-clamp"><?php echo $product['description'] ?></h3>
+                            </td>
+                            <td><?php echo $product['quantity'] ?></td>
+                            <td><?php echo number_format($product['price'], 0, ',', '.'); ?>đ</td>
+                        </tr>
+                    <?php } ?>
                 </tbody>
             </table>
             <div class="confirm">
-                <h2 class="total-price">Tổng tiền: <?php echo number_format($product['price'], 0, ',', '.'); ?>đ</h2>
+                <h2 class="total-price">Tổng tiền: <?php echo number_format($total_price, 0, ',', '.'); ?>đ
+                </h2>
                 <button class="btn" name="buy">Đặt hàng</button>
             </div>
         </div>

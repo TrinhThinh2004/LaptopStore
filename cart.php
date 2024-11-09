@@ -104,7 +104,9 @@ if (isset($_GET['remove_id'])) {
     if ($num > 0) { ?>
         <div class="checkout-box">
             <h2>Tổng tiền: <span id="total-price"><?php echo $total_price; ?></span></h2>
-            <button class="btn">Mua ngay</button>
+            <form action="index.php?act=checkout" method="POST">
+                <button type="submit" class="btn" name="buy-cart">Mua ngay</button>
+            </form>
         </div>
     <?php } ?>
 </div>
