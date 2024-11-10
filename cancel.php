@@ -6,10 +6,7 @@ $result_status = mysqli_query($conn, "SELECT status FROM orders WHERE order_id=$
 $row = mysqli_fetch_assoc($result_status);
 $status = $row['status'];
 if ($status == 1) {
-    $delete_item = mysqli_query($conn, "DELETE FROM order_items WHERE order_id=$order_id");
-    if ($delete_item) {
-        $delete_order_item = mysqli_query($conn, "DELETE FROM orders WHERE order_id=$order_id");
-    }
+    $delete_item = mysqli_query($conn, "UPDATE orders SET status=4 WHERE order_id=$order_id");
 } else {
     $m = "Không thể hủy, đơn hàng đang được giao đến bạn!";
 }
