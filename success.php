@@ -1,16 +1,26 @@
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/success.css">
 
 <?php
 include("includes/connect.php");
-$user_id = 0;
+
 if (isset($_POST['confirm'])) {
     $full_name = $_POST['full_name'];
     $email = $_POST['email'];
     $phone_number = $_POST['phone_number'];
     $address = $_POST['address'];
     $total_price = floatval($_POST['total_price']);
+
     if (isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
+    } else {
+        $sql_add_user = "INSERT INTO users (full_name, email, phone_number, address)
+        VALUES ('$full_name', '$email', '$phone_number', '$address')";
+        $add_user = mysqli_query($conn, $sql_add_user);
+        if ($add_user) {
+            $user_id = mysqli_insert_id($conn);
+        }
+        header("Location: index.php?act=success");
     }
 
     $sql =
@@ -25,8 +35,6 @@ if (isset($_POST['confirm'])) {
     } else {
         echo "Lỗi! ";
     }
-} else {
-    // header("Location: index.php");
 }
 ?>
 
