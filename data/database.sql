@@ -32,7 +32,7 @@ CREATE TABLE Laptops (
   screen_size VARCHAR(50) NOT NULL, -- Kích thước màn hình (ví dụ: 15.6")
   screen_resolution VARCHAR(50) NOT NULL, -- Độ phân giải màn hình (ví dụ: Full HD (1920 x 1080))
   screen_refresh_rate VARCHAR(50), -- Tần số quét màn hình (ví dụ: 144Hz)
-  price DECIMAL(15, 2) NOT NULL, -- Giá laptop (VNĐ)
+  price DECIMAL(20, 2) NOT NULL, -- Giá laptop (VNĐ)
   description TEXT, -- Mô tả thêm về laptop
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -68,7 +68,7 @@ CREATE TABLE Laptop_Categories (
 CREATE TABLE Orders (
   order_id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT,
-  total_price DECIMAL(10, 2) NOT NULL,
+  total_price DECIMAL(20, 2) NOT NULL,
   order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   status TINYINT DEFAULT 1, -- 1: pending, 2: completed, 3: cancelled
   payment_method TINYINT NOT NULL, -- 1: cash, 2: bank transfer (QR)
@@ -85,7 +85,6 @@ CREATE TABLE Order_Items (
   order_id INT,
   laptop_id INT,
   quantity INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
   FOREIGN KEY (laptop_id) REFERENCES Laptops(laptop_id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;

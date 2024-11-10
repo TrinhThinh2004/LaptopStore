@@ -19,9 +19,9 @@ if (isset($_SESSION['user_id'])) {
 
 $laptops = [];
 
-
 if (isset($_GET['buy'])) {
     $laptop_id = $_GET['laptop_id'];
+    $_SESSION['laptop_id'] = $laptop_id;
 
     $sql_laptop =
         "SELECT laptops.laptop_id, laptops.price, laptops.description, 

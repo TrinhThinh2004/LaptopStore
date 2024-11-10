@@ -27,7 +27,42 @@ if (isset($_POST['confirm'])) {
         "INSERT INTO orders (user_id, total_price, email, full_name, phone_number, address, payment_method)
         VALUES ($user_id, $total_price, '$email', '$full_name', '$phone_number', '$address', 1)";
     $insert_order = mysqli_query($conn, $sql);
+
+    $order_id = 0;
     if ($insert_order) {
+        $order_id = mysqli_insert_id($conn);
+
+        if (!isset($_SESSION['laptop_id'])) {
+            $sql_cart = "SELECT laptop_id, quantity FROM Cart WHERE user_id = $user_id";
+            $result_cart = mysqli_query($conn, $sql_cart);
+            if ($result_cart) {
+                while ($row = mysqli_fetch_assoc($result_cart)) {
+                    $laptop_id = $row['laptop_id'];
+                    $quantity = $row['quantity'];
+
+                    // Câu lệnh chèn vào bảng Order_Items
+                    $sql_order_item = "INSERT INTO order_items (order_id, laptop_id, quantity)
+                                   VALUES ($order_id, $laptop_id, $quantity)";
+                    $insert_order_item = mysqli_query($conn, $sql_order_item);
+
+                    if (!$insert_order_item) {
+                        echo "Lỗi khi thêm vào Order_Items: " . mysqli_error($conn);
+                    }
+                }
+            }
+        } else {
+            $laptop_id = $_SESSION['laptop_id'];
+            // Câu lệnh chèn vào bảng Order_Items
+            $sql_order_item = "INSERT INTO order_items (order_id, laptop_id, quantity)
+            VALUES ($order_id, $laptop_id, 1)";
+            $insert_order_item = mysqli_query($conn, $sql_order_item);
+
+            if (!$insert_order_item) {
+                echo "Lỗi khi thêm vào Order_Items: " . mysqli_error($conn);
+            }
+            unset($_SESSION['laptop_id']);
+        }
+
         $sql_delete = "DELETE FROM cart WHERE user_id=$user_id";
         $delete_cart = mysqli_query($conn, $sql_delete);
         $_SESSION['quantity'] = 0;

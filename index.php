@@ -32,6 +32,12 @@
       case 'order':
         include('order.php');
         break;
+      case 'order_detail':
+        include('order_detail.php');
+        break;
+      case 'cancel':
+        include('cancel.php');
+        break;
 
       default:
         include('home.php');

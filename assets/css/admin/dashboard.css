@@ -1,168 +1,170 @@
 :root {
-    --main-color: #4CAF50;
-    --card-background: rgba(214, 254, 174, 0.8);
+  --main-color: #4CAF50;
+  --card-background: rgba(214, 254, 174, 0.8);
 }
 
 
 .dashboard-container {
-    width: 100%;
-    height: auto;
+  padding-top: 60px;
+  width: 100%;
+  height: auto;
 }
 
 .admin-sidebar {
-    position: fixed;
-    max-width: 250px;
-    height: auto;
-    font-size: 20px;
-    border-right: 5px solid #ccc;
-    float: left;
-    background-color: #4CAF50;
+  position: fixed;
+  max-width: 250px;
+  height: auto;
+  font-size: 20px;
+  border-right: 5px solid #ccc;
+  float: left;
+  background-color: #4CAF50;
 }
 
 .admin-sidebar ul li {
-    width: 100%;
-    font-weight: bold;
-    padding: 20px;
-    border-bottom: 1px solid #ccc;
+  width: 100%;
+  font-weight: bold;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
 .admin-sidebar ul li a,
 .admin-sidebar ul li i {
-    color: white;
+  color: white;
 }
 
 .dashboard {
-    float: left;
-    padding-top: 20px;
-    max-width: 900px;
-    margin-left: 250px;
+  float: left;
+  padding-top: 20px;
+  max-width: 900px;
+  margin-left: 250px;
 }
 
 
 .cards {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-left: 50px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-left: 50px;
 }
 
 .card {
-    margin-top: 20px;
-    background-color: rgb(214, 254, 174);
-    height: 200px;
-    width: 400px;
-    align-items: center;
-    padding: 30px;
-    border-radius: 30px;
-    font-size: 30px;
-    display: flex;
-    flex-direction: column;
-    cursor: pointer;
-    color: black;
+  margin-top: 20px;
+  background-color: rgb(214, 254, 174);
+  height: 200px;
+  width: 400px;
+  align-items: center;
+  padding: 30px;
+  border-radius: 30px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  color: black;
 }
 
 .card-icon {
-    font-size: 50px;
-    margin-top: 5px;
+  font-size: 50px;
+  margin-top: 5px;
 }
 
 .content {
-    flex: 1;
-    padding: 20px;
-    margin-top: 20px;
+  flex: 1;
+  padding: 20px;
+  margin-top: 20px;
 }
 
 
 .content table {
-    width: 800px;
-    border-collapse: collapse;
+  width: 800px;
+  border-collapse: collapse;
 }
 
 .content th,
 td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
 }
 
 .content th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
 .action-buttons {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .search-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px; 
-}
-.search-container input {
-    padding: 5px;
-    margin-right: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
- .hidden {
-    display: none;
+.search-container input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.hidden {
+  display: none;
 }
 
 #editUser {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-    width: 500px;
-    height: auto;
-    margin-left: 200px;
-  }
-  
-  #editUser table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  #editUser td {
-    padding: 10px;
-    vertical-align: middle;
-  }
-  
-  #editUser td:first-child {
-    font-weight: bold;
-    text-align: right; 
-  }
-  
-  #editUser input[type="text"],
-  #editUser select {
-    width: calc(100% - 10px);
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box; 
-  }
-  
-  #editUser input[type="submit"],
-  #editUser input[type="button"] {
-    background-color: #4CAF50; 
-    color: white;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    margin: 5px;
-  }
-  
-  #editUser input[type="button"] {
-    background-color: #f44336; 
-  }
-  
-  #editUser input[type="submit"]:hover,
-  #editUser input[type="button"]:hover {
-    opacity: 0.8;
-  }
-  
-  #editUser td[colspan="2"] {
-    text-align: center;
-  }
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 500px;
+  height: auto;
+  margin-left: 200px;
+}
+
+#editUser table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#editUser td {
+  padding: 10px;
+  vertical-align: middle;
+}
+
+#editUser td:first-child {
+  font-weight: bold;
+  text-align: right;
+}
+
+#editUser input[type="text"],
+#editUser select {
+  width: calc(100% - 10px);
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+#editUser input[type="submit"],
+#editUser input[type="button"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#editUser input[type="button"] {
+  background-color: #f44336;
+}
+
+#editUser input[type="submit"]:hover,
+#editUser input[type="button"]:hover {
+  opacity: 0.8;
+}
+
+#editUser td[colspan="2"] {
+  text-align: center;
+}

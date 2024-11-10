@@ -26,6 +26,9 @@ header {
     height: 60px;
     background-color: #4CAF50;
     color: white;
+    position: fixed;
+    width: 100vw;
+    z-index: 1000;
 }
 
 nav {
