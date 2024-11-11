@@ -1,55 +1,13 @@
 <?php
 include_once("../includes/connect.php");
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    if ($_POST['action'] == 'delete' && isset($_POST['username'])) {
-        $username = $conn->real_escape_string($_POST['username']);
-
-        $checkRoleSql = "SELECT role FROM users WHERE username = '$username'";
-        $result = $conn->query($checkRoleSql);
-        $row = $result->fetch_assoc();
-
-        if ($row['role'] == 1) {
-            http_response_code(403); 
-            echo "Không thể xóa tài khoản admin.";
-        } else {
-            $deleteSql = "UPDATE users SET deleted = 1 WHERE username = '$username'";
-            if ($conn->query($deleteSql) === TRUE) {
-                http_response_code(200);
-                echo "Xóa người dùng thành công.";
-            } else {
-                http_response_code(500);
-                echo "Xóa người dùng không thành công.";
-            }
-        }
-        exit;
-    } if ($_POST['action'] == 'update' && isset($_POST['username'], $_POST['fullname'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['role'])) {
-        $username = $conn->real_escape_string($_POST['username']);
-        $fullname = $conn->real_escape_string($_POST['fullname']);
-        $email = $conn->real_escape_string($_POST['email']);
-        $phone = $conn->real_escape_string($_POST['phone']);
-        $address = $conn->real_escape_string($_POST['address']);
-        $role = intval($_POST['role']);
-
-
-        $updateSql = "UPDATE users SET full_name = '$fullname', email = '$email', phone_number = '$phone', address = '$address', role = $role WHERE username = '$username'";
-
-        if ($conn->query($updateSql) === TRUE) {
-            http_response_code(200);
-            echo "Thông tin người dùng đã được cập nhật thành công.";
-        } else {
-            http_response_code(500);
-            echo "Cập nhật thông tin không thành công: " . $conn->error;
-        }
-        exit;
-    }
-}
 ?>
 
 <link rel="stylesheet" href="../assets/css/admin/dashboard.css">
 <link rel="stylesheet" href="../assets/css/base.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
+<?php include('update_user.php'); ?>
+<?php include('confirm_order.php'); ?>
 <?php include("header_admin.php"); ?>
 
 <div class="grid">
@@ -105,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                 <table>
                     <thead>
                         <tr>
+                            <th>STT</th>
                             <th>Tên tài khoản</th>
                             <th>Mật khẩu</th>
                             <th>Email</th>
@@ -117,36 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                     </thead>
                     <tbody>
                         <?php
-                        $sql = "SELECT username, password, email, full_name, phone_number, address, role FROM users WHERE deleted = 0";
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0) {
-                            while ($row = $result->fetch_assoc()) {
-                                echo "<tr>";
-                                echo "<td>" . htmlspecialchars($row['username']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['password']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['email']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['phone_number']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['address']) . "</td>";
-                                echo "<td>" . htmlspecialchars($row['role'] == 0 ? "User" : "Admin") . "</td>";
-                                echo "<td>
-                                    <div class='action-buttons' style='color: red; cursor:pointer'>
-                                        <a href='#' onclick=\"showEditForm({
-                                            username: '{$row['username']}',
-                                            full_name: '{$row['full_name']}',
-                                            email: '{$row['email']}',
-                                            phone_number: '{$row['phone_number']}',
-                                            address: '{$row['address']}'
-                                        })\"><i class='fa-regular fa-pen-to-square'></i></a>
-                                        <a href='#' onclick='deleteUser(this)' data-username='{$row['username']}'><i class='fa-regular fa-circle-xmark'></i></a>
-                                    </div>
-                                </td>";
-                                echo "</tr>";
-                            }
-                        } else {
-                            echo "<tr><td colspan='8'>Không có dữ liệu</td></tr>";
-                        }
+                        include("user_management.php");
                         ?>
                     </tbody>
                 </table>
@@ -164,27 +94,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
                             <th>Tên khách hàng</th>
                             <th>Ngày đặt hàng</th>
                             <th>Địa chỉ</th>
-                            <th>Hình thức</th>
+                            <th>Tổng tiền</th>
+                            <th>Hình thức thanh toán</th>
                             <th>Trạng thái</th>
                             <th>Xem chi tiết</th>
                             <th>Tác vụ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>DHMS5</td>
-                            <td>Hoàng Minh</td>
-                            <td>14-06-2017</td>
-                            <td>Quận 12, TPHCM</td>
-                            <td>Chuyển khoản</td>
-                            <td>Đã duyệt</td>
-                            <td><a href="#">Xem chi tiết</a></td>
-                            <td>
-                                <div class="action-buttons" style="color: red;">
-                                    <a href="#"><i class="fa-solid fa-check"></i></a>
-                                </div>
-                            </td>
-                        </tr>
+                        <?php
+                        include("order_admin.php");
+                        ?>
                     </tbody>
                 </table>
             </div>
@@ -233,98 +153,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         </div>
     </div>
 </div>
-
-<script>
-    function toggleDisplay(showId, hideId) {
-        document.getElementById(showId).style.display = 'block';
-        document.getElementById(hideId).style.display = 'none';
-    }
-
-    function showUserManagement() {
-        toggleDisplay('userManagement', 'orderManagement');
-        toggleDisplay('userManagement', 'cards');
-    }
-
-    function showOrderManagement() {
-        toggleDisplay('orderManagement', 'userManagement');
-        toggleDisplay('orderManagement', 'cards');
-    }
-
-    function showCards() {
-        toggleDisplay('cards', 'userManagement');
-        toggleDisplay('cards', 'orderManagement');
-    }
-
-    //Xóa user
-    function deleteUser(anchorElement) {
-        if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
-            var username = anchorElement.getAttribute("data-username");
-
-            fetch(window.location.href, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body: "username=" + encodeURIComponent(username) + "&action=delete"
-            }).then(response => {
-                if (response.ok) {
-                    anchorElement.closest('tr').remove();
-                    alert("Xóa người dùng thành công !");
-                } else {
-                    alert("Xóa người dùng không thành công !");
-                }
-            });
-        }
-    }
-
-
-    function showEditForm(user) {
-        document.getElementById("editUsername").value = user.username;
-        document.getElementById("editFullname").value = user.full_name;
-        document.getElementById("editEmail").value = user.email;
-        document.getElementById("editPhone").value = user.phone_number;
-        document.getElementById("editAddress").value = user.address;
-        document.getElementById("editRole").value = user.role === "Admin" ? 1 : 0;
-
-        document.getElementById("userManagement").style.display = "none";
-        document.getElementById("editUser").classList.remove("hidden");
-    }
-
-    //Ẩn form khi ấn hủy
-    function hideEditForm() {
-        document.getElementById("userManagement").style.display = "block";
-        document.getElementById("editUser").classList.add("hidden");
-    }
-
-    document.getElementById("editUserForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        formData.append("action", "update");
-
-        fetch(window.location.href, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text(); // Only parse response if successful
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
-            })
-            .then(data => {
-                alert(data);
-                hideEditForm();
-                location.reload();
-            })
-            .catch(error => {
-                alert("Cập nhật không thành công: " + error); // Display more specific error
-                console.error("Error during update:", error);
-            });
-    });
-
-    // Ẩn form khi load trang
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('editUser').classList.add('hidden');
-    });
-</script>
+<script src="dashboard.js"></script>
