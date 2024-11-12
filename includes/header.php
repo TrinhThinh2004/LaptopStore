@@ -10,8 +10,6 @@ if (isset($_SESSION["username"])) {
     $username = "Xin chào, " . $_SESSION["username"];
     $quantity = isset($_SESSION['quantity']) ? $_SESSION['quantity'] : 0;
 }
-
-
 ?>
 
 
@@ -26,8 +24,11 @@ if (isset($_SESSION["username"])) {
             <ul>
                 <li class="search-container nav-item">
                     <div class="form-control">
-                        <input type="text" placeholder="Bạn tìm gì" class="search-input">
-                        <i class="fas fa-search icon"></i>
+                        <form action="index.php" method="GET">
+                            <input type="hidden" name="act" value="products">
+                            <input type="text" placeholder="Bạn tìm gì" class="search-input" name="word">
+                            <button class="search" href=""><i class="fas fa-search icon"></i></button>
+                        </form>
                     </div>
                 </li>
 

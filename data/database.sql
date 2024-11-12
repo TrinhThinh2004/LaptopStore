@@ -195,7 +195,7 @@ VALUES
 
 ('Apple', 'apple_macbook_pro_14_inch_m3', 'Apple M3', 8, 'Unified Memory', 'Hang khong cong bo', 512, 'SSD', 'Apple M3', '14.2 inches', 'Liquid Retina XDR display (3024 x 1964)', '120 Hz', 38190000, 'Laptop Apple MacBook Pro 14 inch M3 8GB/512GB (MR7J3SA/A)'),
 
-('Apple', 'macbook_pro_14_inch_m2_pro_2023_12-core', 'Apple M2 Pro', 12, 'Unified Memory', 'Hang khong cong bo', 1024, 'SSD', 'Apple M2 Pro', '14.2 inches', 'Liquid Retina XDR display (3024 x 1964)', '120 Hz', 59690000, 'Laptop MacBook Pro 14 inch M2 Pro 2023 12-core CPU/16GB/1TB/19-core GPU (MPHJ3SA/A)'),
+('Apple', 'macbook_pro_14_inch_m2_pro_2023_12-core', 'Apple M2 Pro', 16, 'Unified Memory', 'Hang khong cong bo', 1024, 'SSD', 'Apple M2 Pro', '14.2 inches', 'Liquid Retina XDR display (3024 x 1964)', '120 Hz', 59690000, 'Laptop MacBook Pro 14 inch M2 Pro 2023 12-core CPU/16GB/1TB/19-core GPU (MPHJ3SA/A)'),
 
 ('Apple', 'apple_macbook_air_13_inch_m1', 'Apple M1', 8, 'Unified Memory', 'Hang khong cong bo', 256, 'SSD', 'Apple M1', '13.3 inches', '2560 x 1600', '60Hz', 18590000, 'Laptop Apple MacBook Air 13 inch M1 8GB/256GB (MGN63SA/A)'),
 

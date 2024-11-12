@@ -55,10 +55,10 @@ if (isset($_POST['add_to_cart'])) {
 <div class="container">
   <div class="carousel">
     <div class="carousel-inner">
-      <a href="product.php" class="carousel-item"><img src="https://laptopaz.vn/media/banner/18_Mare95ffd274c039d51bb5b9fa0e7e5dbef.jpg" class="img-feature"></a>
-      <a href="product.php" class="carousel-item"><img src="https://laptopaz.vn/media/banner/22_Marf1a391c8c48fca0c805c17e2c743086c.jpg" class="img-feature"></a>
-      <a href="product.php" class="carousel-item"><img src="https://laptopaz.vn/media/banner/23_Febb116d6e35406ebdef0d2ac4ce9cdde18.jpg" class="img-feature"></a>
-      <a href="product.php" class="carousel-item"><img src="https://laptopaz.vn/media/banner/13_Marebcfec48f483f123a3559f099e10e6e8.jpg" class="img-feature"></a>
+      <a href="index.php?act=products" class="carousel-item"><img src="https://laptopaz.vn/media/banner/18_Mare95ffd274c039d51bb5b9fa0e7e5dbef.jpg" class="img-feature"></a>
+      <a href="index.php?act=products" class="carousel-item"><img src="https://laptopaz.vn/media/banner/22_Marf1a391c8c48fca0c805c17e2c743086c.jpg" class="img-feature"></a>
+      <a href="index.php?act=products" class="carousel-item"><img src="https://laptopaz.vn/media/banner/23_Febb116d6e35406ebdef0d2ac4ce9cdde18.jpg" class="img-feature"></a>
+      <a href="index.php?act=products" class="carousel-item"><img src="https://laptopaz.vn/media/banner/13_Marebcfec48f483f123a3559f099e10e6e8.jpg" class="img-feature"></a>
     </div>
     <button class="control prev"><i class="fa-solid fa-arrow-left"></i></button>
     <button class="control next"><i class="fa-solid fa-arrow-right"></i></button>
