@@ -3,14 +3,17 @@
   <script src="assets/js/jquery-3.7.1.min.js"></script>
   <script src="assets/js/handle.js"></script>
 
-  <?php
-  include('includes/header.php');
-  ?>
+  <!-- <?php
+        include('includes/header.php');
+        ?> -->
 
   <div class="main">
     <?php
     switch ($_GET['act'] ?? '') {
 
+      case 'products':
+        include('products.php');
+        break;
       case 'product_detail':
         include('product_detail.php');
         break;

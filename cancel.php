@@ -30,9 +30,5 @@ if ($status == 1) {
 </style>
 
 <div class="main">
-    <div class="cancel-container">
-        <div class="cancel-text">
-            <h2><?php echo $m; ?></h2>
-        </div>
-    </div>
+
 </div>

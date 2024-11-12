@@ -65,20 +65,20 @@ if (isset($_POST['add_to_cart'])) {
   </div>
 
   <div class="lst-img">
-    <img src="assets/images/logo/asus.png" alt="HP">
-    <img src="assets/images/logo/dell.png" alt="Asus">
-    <img src="assets/images/logo/hp.png" alt="Dell">
-    <img src="assets/images/logo/lenovo.png" alt="Lenovo">
-    <img src="assets/images/logo/macbook.png" alt="Macbook">
-    <img src="assets/images/logo/acer.png" alt="Acer">
-    <img src="assets/images/logo/msi.png" alt="MSI">
+    <a href="?act=products&brand=Asus"><img src="assets/images/logo/asus.png" alt="Asus"></a>
+    <a href="?act=products&brand=Dell"><img src="assets/images/logo/dell.png" alt="Dell"></a>
+    <a href="?act=products&brand=HP"><img src="assets/images/logo/hp.png" alt="HP"></a>
+    <a href="?act=products&brand=Lenovo"><img src="assets/images/logo/lenovo.png" alt="Lenovo"></a>
+    <a href="?act=products&brand=Apple"><img src="assets/images/logo/macbook.png" alt="Macbook"></a>
+    <a href="?act=products&brand=Acer"><img src="assets/images/logo/acer.png" alt="Acer"></a>
+    <a href="?act=products&brand=MSI"><img src="assets/images/logo/msi.png" alt="MSI"></a>
   </div>
   <div class="filter-section">
     <div>
       <h3>Giá:
         <select name="price">
-          <option>none</option>
-          <option>Dưới 10 triệu</option>
+          <option>Giá</option>
+          <option>Dưới 15 triệu</option>
           <option>15 - 20 triệu</option>
           <option>10 - 15 triệu</option>
           <option>20 - 25 triệu</option>
@@ -91,7 +91,7 @@ if (isset($_POST['add_to_cart'])) {
     <div>
       <h3>Loại sản phẩm:
         <select name="type">
-          <option>none</option>
+          <option>Loại sản phẩm</option>
           <option>Laptop AI</option>
           <option>Gaming</option>
           <option>Học tập, văn phòng</option>
@@ -106,7 +106,7 @@ if (isset($_POST['add_to_cart'])) {
     <div>
       <h3>RAM:
         <select name="ram">
-          <option>none</option>
+          <option>RAM</option>
           <option>2 GB</option>
           <option>4 GB</option>
           <option>8 GB</option>
@@ -120,7 +120,7 @@ if (isset($_POST['add_to_cart'])) {
     <div>
       <h3>Ổ cứng:
         <select name="disk">
-          <option>none</option>
+          <option>Ổ cứng</option>
           <option>SSD 2TB</option>
           <option>SSD 1TB</option>
           <option>SSD 512GB</option>
@@ -162,24 +162,28 @@ if (isset($_POST['add_to_cart'])) {
     }
     ?>
   </div>
+  <div class="watch-more-box">
+    <button class="btn watch-more" onclick="location.href='index.php?act=products'">Xem thêm</button>
+  </div>
+</div>
 
-  <script>
-    const carouselInner = document.querySelector('.carousel-inner');
-    const images = document.querySelectorAll('.img-feature');
-    let index = 0;
+<script>
+  const carouselInner = document.querySelector('.carousel-inner');
+  const images = document.querySelectorAll('.img-feature');
+  let index = 0;
 
-    document.querySelector('.next').addEventListener('click', () => {
-      index = (index + 1) % images.length;
-      updateCarousel();
-    });
+  document.querySelector('.next').addEventListener('click', () => {
+    index = (index + 1) % images.length;
+    updateCarousel();
+  });
 
-    document.querySelector('.prev').addEventListener('click', () => {
-      index = (index - 1 + images.length) % images.length;
-      updateCarousel();
-    });
+  document.querySelector('.prev').addEventListener('click', () => {
+    index = (index - 1 + images.length) % images.length;
+    updateCarousel();
+  });
 
-    function updateCarousel() {
-      const offset = -index * 100;
-      carouselInner.style.transform = `translateX(${offset}%)`;
-    }
-  </script>
+  function updateCarousel() {
+    const offset = -index * 100;
+    carouselInner.style.transform = `translateX(${offset}%)`;
+  }
+</script>
