@@ -27,8 +27,16 @@ if ($status == 1) {
         background-color: #DDFFDD;
         border-radius: 20px;
     }
+
+    .cancel-text h2 {
+        padding: 0;
+    }
 </style>
 
 <div class="main">
-
+    <div class="cancel-container">
+        <div class="cancel-text">
+            <h2><?php echo $m; ?></h2>
+        </div>
+    </div>
 </div>

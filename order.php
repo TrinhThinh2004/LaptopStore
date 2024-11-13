@@ -29,6 +29,7 @@ $order_result = mysqli_query($conn, $sql);
                     <td><?php
                         if ($o['status'] == 1) echo "Đang chờ xác nhận";
                         elseif ($o['status'] == 2) echo "Đang giao";
+                        elseif ($o['status'] == 3) echo "Đã giao thành công";
                         else echo "Đã hủy" ?></td>
                     <td><a href="index.php?act=order_detail&order_id=<?php echo $o['order_id']; ?>">Chi tiết</a></td>
                 </tr>

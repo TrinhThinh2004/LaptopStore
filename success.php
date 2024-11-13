@@ -73,13 +73,13 @@ if (isset($_POST['confirm'])) {
 }
 ?>
 <style>
-    .cancel-container {
+    .success-container {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .cancel-text {
+    .success-text {
         margin-top: 50px;
         padding: 40px;
         width: 100%;
@@ -88,14 +88,14 @@ if (isset($_POST['confirm'])) {
         border-radius: 20px;
     }
 
-    .cancel-text h2 {
+    .success-text h2 {
         padding: 0;
     }
 </style>
 
 <div class="main">
-    <div class="cancel-container">
-        <div class="cancel-text">
+    <div class="success-container">
+        <div class="success-text">
             <h2>Đặt hàng thành công, chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất</h2>
         </div>
     </div>
