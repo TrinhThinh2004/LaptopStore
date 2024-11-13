@@ -70,7 +70,7 @@ CREATE TABLE Orders (
   user_id INT,
   total_price DECIMAL(20, 2) NOT NULL,
   order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
-  status TINYINT DEFAULT 1, -- 1: chờ xác nhận, 2:Đang giao, 3: completed, 4: cancelled
+  status TINYINT DEFAULT 0, -- 0: chờ xác nhận, 1: Đã xác nhận, 2:Đang giao, 3: completed, 4: cancelled
   payment_method TINYINT NOT NULL, -- 1: cash, 2: bank transfer (QR)
   email VARCHAR(100) NOT NULL,
   full_name VARCHAR(100),

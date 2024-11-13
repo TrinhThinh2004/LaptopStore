@@ -6,16 +6,25 @@ function toggleDisplay(showId, hideId) {
 function showUserManagement() {
     toggleDisplay('userManagement', 'orderManagement');
     toggleDisplay('userManagement', 'cards');
+    toggleDisplay('userManagement', 'productsManagement');
 }
 
 function showOrderManagement() {
     toggleDisplay('orderManagement', 'userManagement');
     toggleDisplay('orderManagement', 'cards');
+    toggleDisplay('orderManagement', 'productsManagement');
 }
 
 function showCards() {
     toggleDisplay('cards', 'userManagement');
     toggleDisplay('cards', 'orderManagement');
+    toggleDisplay('cards', 'productsManagement');
+}
+
+function showProductsManagement() {
+    toggleDisplay('productsManagement', 'userManagement')
+    toggleDisplay('productsManagement', 'orderManagement')
+    toggleDisplay('productsManagement', 'cards')
 }
 
 //Xóa user
@@ -39,7 +48,6 @@ function deleteUser(anchorElement) {
         });
     }
 }
-
 
 function showEditForm(user) {
     document.getElementById("editUsername").value = user.username;
@@ -90,3 +98,25 @@ document.getElementById("editUserForm").addEventListener("submit", function(even
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('editUser').classList.add('hidden');
 });
+
+//Xóa product
+function deleteProduct(anchorElement) {
+    if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
+        var laptopid = anchorElement.getAttribute("data-laptopid");
+
+        fetch(window.location.href, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "laptop_id=" + encodeURIComponent(laptopid) + "&action=delete"
+        }).then(response => {
+            if (response.ok) {
+                anchorElement.closest('tr').remove();
+                alert("Xóa sản phẩm thành công !");
+            } else {
+                alert("Xóa sản phẩm không thành công !");
+            }
+        });
+    }
+}
