@@ -33,7 +33,7 @@ CREATE TABLE Laptops (
   screen_resolution VARCHAR(50) NOT NULL, -- Độ phân giải màn hình (ví dụ: Full HD (1920 x 1080))
   screen_refresh_rate VARCHAR(50), -- Tần số quét màn hình (ví dụ: 144Hz)
   price DECIMAL(20, 2) NOT NULL, -- Giá laptop (VNĐ)
-  quantity INT NOT NULL DEFAULT 0, -- Số lượng laptop có sẵn
+  stock_quantity INT NOT NULL DEFAULT 0, -- Số lượng laptop có sẵn
   description TEXT, -- Mô tả thêm về laptop
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
