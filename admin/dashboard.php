@@ -6,7 +6,7 @@ include_once("../includes/connect.php");
 <link rel="stylesheet" href="../assets/css/base.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
 
-<?php include('update_user.php'); ?>
+<?php include('update.php'); ?>
 <?php include('confirm_order.php'); ?>
 <?php include("header_admin.php"); ?>
 
@@ -16,7 +16,7 @@ include_once("../includes/connect.php");
             <ul>
                 <li style="color: white;">Trang chủ Admin</li>
                 <li><a href="#" onclick="showCards()">Dashboard</a></li>
-                <li><a href="products.php">Quản lý sản phẩm</a></li>
+                <li><a href="#" onclick="showProductsManagement()">Quản lý sản phẩm</a></li>
                 <li><a href="products.php">Quản lý danh mục sản phẩm</a></li>
                 <li><a href="#" onclick="showOrderManagement()">Quản lý đơn hàng</a></li>
                 <li><a href="#" onclick="showUserManagement()">Quản lý người dùng</a></li>
@@ -82,6 +82,30 @@ include_once("../includes/connect.php");
                 </table>
             </div>
 
+            <div class="content" id="productsManagement" style="display: none;">
+                <div class="search-container">
+                    <input type="text" placeholder="Tìm kiếm">
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Hình ảnh</th>
+                            <th>Tên</th>
+                            <th>Thương hiệu</th>
+                            <th>Giá tiền</th>
+                            <th>Số lượng</th>
+                            <th>Tác vụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include("products_management.php");
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
             <!-- Order Management -->
             <div class="content" id="orderManagement" style="display: none;">
                 <div class="search-container">
@@ -90,12 +114,14 @@ include_once("../includes/connect.php");
                 <table>
                     <thead>
                         <tr>
+                            <th>STT</th>
                             <th>Mã đơn hàng</th>
                             <th>Tên khách hàng</th>
                             <th>Ngày đặt hàng</th>
                             <th>Địa chỉ</th>
                             <th>Tổng tiền</th>
                             <th>Hình thức thanh toán</th>
+                            <th>Số lượng</th>
                             <th>Trạng thái</th>
                             <th>Xem chi tiết</th>
                             <th>Tác vụ</th>
@@ -103,7 +129,7 @@ include_once("../includes/connect.php");
                     </thead>
                     <tbody>
                         <?php
-                        include("order_admin.php");
+                        include("order_management.php");
                         ?>
                     </tbody>
                 </table>

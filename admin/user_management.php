@@ -1,11 +1,12 @@
 <?php
 $sql = "SELECT user_id ,username, password, email, full_name, phone_number, address, role FROM users WHERE deleted = 0";
 $result = $conn->query($sql);
+$counter = 1;
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . htmlspecialchars($row['user_id']) . "</td>";
+        echo "<td>" . $counter . "</td>";
         echo "<td>" . htmlspecialchars($row['username']) . "</td>";
         echo "<td>" . htmlspecialchars($row['password']) . "</td>";
         echo "<td>" . htmlspecialchars($row['email']) . "</td>";
@@ -26,6 +27,7 @@ if ($result->num_rows > 0) {
             </div>
             </td>";
         echo "</tr>";
+        $counter++;
     }
 } else {
     echo "<tr><td colspan='8'>Không có dữ liệu</td></tr>";

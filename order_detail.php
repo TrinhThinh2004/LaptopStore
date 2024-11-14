@@ -51,7 +51,8 @@ $status = $row['status'];
         <?php } else { ?>
             <h2>Trạng thái:
                 <?php
-                if ($status == 1) echo "Đang chờ xác nhận";
+                if ($status == 0) echo "Đang chờ xác nhận";
+                elseif ($status == 1) echo "Đã xác nhận";
                 elseif ($status == 2) echo "Đang giao";
                 elseif ($status == 3) echo "Đã giao thành công";
                 else echo "Đã hủy" ?>

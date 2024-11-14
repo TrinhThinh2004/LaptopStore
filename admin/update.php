@@ -24,6 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
         exit;
     }
+
     if ($_POST['action'] == 'update' && isset($_POST['username'], $_POST['fullname'], $_POST['email'], $_POST['phone'], $_POST['address'], $_POST['role'])) {
         $username = $conn->real_escape_string($_POST['username']);
         $fullname = $conn->real_escape_string($_POST['fullname']);
@@ -44,5 +45,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         }
         exit;
     }
+
+    if ($_POST['action'] == 'delete' && isset($_POST['laptop_id'])) {
+        $laptopid = $conn->real_escape_string($_POST['laptop_id']);
+        $deleteSql = "UPDATE laptops SET deleted = 1 WHERE laptop_id = '$laptopid'";
+        if ($conn->query($deleteSql) === TRUE) {
+            http_response_code(200);
+            echo "Xóa sản phẩm thành công.";
+        } else {
+            http_response_code(500);
+            echo "Xóa sản phẩm không thành công.";
+        }
+        exit;
+    }
+
 }
-?>
