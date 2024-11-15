@@ -104,7 +104,7 @@ CREATE TABLE Cart (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
-INSERT INTO Laptops (brand, model, processor, ram_capacity, ram_type, ram_speed, storage, storage_type, gpu, screen_size, screen_resolution, screen_refresh_rate, price, quantity, description) VALUES
+INSERT INTO Laptops (brand, model, processor, ram_capacity, ram_type, ram_speed, storage, storage_type, gpu, screen_size, screen_resolution, screen_refresh_rate, price, stock_quantity, description) VALUES
 ('Acer', 'acer_aspire_3_a315_44p_r9w8_r7', 'AMD Ryzen 7 - 5700U', 8, 'DDR4', '3200 MHz', 512, 'SSD NVMe PCIe', 'AMD Radeon Graphics', '15.6 inches', 'Full HD (1920 x 1080)', '60Hz', 10690000, 200, 'Laptop Acer Aspire 3 A315 44P R9W8 R7 5700U/8GB/512GB/Win11 (NX.KSJSV.002)'),
 ('Acer', 'acer_gaming_aspire_5_a515_58gm_53pz_i5', 'Intel Core i5 Raptor Lake - 13420H', 8, 'DDR4', '3200 MHz', 512, 'SSD NVMe PCIe', 'NVIDIA GeForce RTX 2050 (4GB)', '15.6 inches', 'Full HD (1920 x 1080)', '144Hz', 15490000, 250, 'Laptop Acer Gaming Aspire 5 A515 58GM 53PZ i5 13420H/8GB/512GB/4GB RTX2050/Win11 (NX.KQ4SV.008)'),
 ('Acer', 'acer_gaming_nitro_an515_58_773y_i7', 'Intel Core i7 Alder Lake - 12700H', 16, 'DDR4', '3200 MHz', 512, 'SSD NVMe PCIe', 'NVIDIA GeForce RTX 3050Ti (4GB)', '15.6 inches', 'Full HD (1920 x 1080)', '144Hz', 22990000, 300, 'Laptop Acer Gaming Nitro AN515 58 773Y i7 12700H/16GB/512GB/4GB RTX3050Ti/144Hz/Win11 (NH.QFKSV.001.16G)'),
