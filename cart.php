@@ -23,30 +23,6 @@ $sql = "SELECT L.laptop_id, L.brand, L.model, L.description, L.price, C.quantity
 $result = mysqli_query($conn, $sql);
 $num = mysqli_num_rows($result);
 
-// if (isset($_POST['action']) && $_POST['action'] == 'update_quantity') {
-//     $laptop_id = $_POST['laptop_id'];
-//     $quantity = $_POST['quantity'];
-//     $update_query = "UPDATE Cart SET quantity = $quantity WHERE user_id = $user_id AND laptop_id = $laptop_id";
-//     if (mysqli_query($conn, $update_query)) {
-//         // Recalculate the total price after updating quantity
-//         $total_query = "SELECT SUM(L.price * C.quantity) AS total_price 
-//                         FROM Cart C 
-//                         JOIN Laptops L ON C.laptop_id = L.laptop_id 
-//                         WHERE C.user_id = $user_id";
-//         $result_total = mysqli_query($conn, $total_query);
-//         $row_total = mysqli_fetch_assoc($result_total);
-//         $total_price = $row_total['total_price'];
-
-//         // Return success response with new total price
-//         echo json_encode([
-//             'success' => true,
-//             'total_price' => $total_price
-//         ]);
-//     } else {
-//         echo json_encode(['success' => false]);
-//     }
-//     exit; // End script here for AJAX requests
-// }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $laptop_id = $_POST['laptop_id'];

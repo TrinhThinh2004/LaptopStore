@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['add_to_cart'])) {
+if (isset($_POST['laptop_id'])) {
     if (!isset($_SESSION['user_id'])) {
         header("Location: login.php");
         exit;
@@ -31,3 +31,4 @@ if (isset($_POST['add_to_cart'])) {
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
+?>

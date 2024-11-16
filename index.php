@@ -1,7 +1,6 @@
   <link rel="stylesheet" href="assets/css/header.css">
   <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.6.0-web/css/all.min.css">
   <script src="assets/js/jquery-3.7.1.min.js"></script>
-  <script src="assets/js/handle.js"></script>
 
   <?php
   include('includes/header.php');

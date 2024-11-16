@@ -20,6 +20,7 @@ include("includes/add_to_cart.php");
 <link rel="stylesheet" href="assets/css/home.css">
 <link rel="stylesheet" href="assets/css/header.css">
 <link rel="stylesheet" href="assets/css/filter.css">
+<script src="assets/js/add-to-cart.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 <div class="container">
@@ -56,7 +57,8 @@ include("includes/add_to_cart.php");
 
             <form action="" method="POST" style="display: inline;">
               <input type="hidden" name="laptop_id" value="<?php echo $product['laptop_id']; ?>">
-              <button type="submit" class="btn" name="add_to_cart">Giỏ hàng</button>
+              <!-- <button type="submit" class="btn" name="add_to_cart" data-laptop-id="<?php echo $product['laptop_id']; ?>">Giỏ hàng</button> -->
+              <button type="submit" class="btn add_to_cart" data-laptop-id="<?php echo $product['laptop_id']; ?>">Giỏ hàng</button>
             </form>
 
           </div>

@@ -23,7 +23,6 @@ body {
 }
 
 .product-container {
-    justify-content: space-evenly;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
