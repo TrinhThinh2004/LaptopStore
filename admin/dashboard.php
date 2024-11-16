@@ -3,8 +3,7 @@ include_once("../includes/connect.php");
 
 if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
     header("Location: dashboard.php");
-} else {
-    // Nếu vai trò là 0 (user), chuyển hướng đến trang user
+} elseif (isset($_SESSION['role']) && $_SESSION['role'] == 0) {
     header("Location: index.php");
 }
 ?>
@@ -24,7 +23,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                 <li style="color: white;">Trang chủ Admin</li>
                 <li><a href="#" onclick="showCards()">Dashboard</a></li>
                 <li><a href="#" onclick="showProductManagement()">Quản lý sản phẩm</a></li>
-                <li><a href="products.php">Quản lý danh mục sản phẩm</a></li>
                 <li><a href="#" onclick="showOrderManagement()">Quản lý đơn hàng</a></li>
                 <li><a href="#" onclick="showUserManagement()">Quản lý người dùng</a></li>
                 <li><a href="../logout.php">Đăng xuất</a></li>
@@ -164,15 +162,17 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         </tr>
                         <tr>
                             <td>Họ tên:</td>
-                            <td><input id="editFullname" name="fullname" type="text"></td>
+                            <td><input id="editFullname" name="fullname" type="text" required></td>
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td><input id="editEmail" name="email" type="text"></td>
+                            <td><input id="editEmail" name="email" type="email" required></td>
                         </tr>
                         <tr>
                             <td>Số điện thoại:</td>
-                            <td><input id="editPhone" name="phone" type="text"></td>
+                            <td>
+                                <input id="editPhone" name="phone" type="text" pattern="\d{10}" maxlength="10" required>
+                            </td>
                         </tr>
                         <tr>
                             <td>Địa chỉ:</td>

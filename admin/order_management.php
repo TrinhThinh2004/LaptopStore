@@ -1,5 +1,5 @@
 <?php
-$order = "SELECT O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity 
+$order = "SELECT O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity, O.order_id 
 FROM orders O
 JOIN order_items OI ON O.order_id = OI.order_id
 GROUP BY O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity";
@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
             $row['status'] == 1 ? "Chưa xác nhận" : ($row['status'] == 2 ? "Đang giao" : "Đã giao")
         ) . "</td>";
 
-        echo "<td></td>";
+        echo "<td><a href='http://localhost/LaptopStore/index.php?act=order_detail&order_id=" . $row['order_id'] . "'>Chi tiết</a></td>";
         if ($row['status'] == 1) {
             echo "<td>
                 <div style='text-align: center; cursor:pointer;'>
