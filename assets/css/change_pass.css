@@ -1,0 +1,33 @@
+.change-pass-container {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.change-pass-container label {
+    display: block;
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.change-pass-container input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.title-change {
+    text-align: center;
+    margin: 20px;
+}
+
+.submit-box {
+    display: flex;
+    justify-content: center;
+}

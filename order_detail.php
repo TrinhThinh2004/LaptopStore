@@ -1,5 +1,8 @@
 <?php
 include("includes/connect.php");
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+}
 $order_id = $_GET['order_id'];
 $sql =
     "SELECT L.description, L.price, OI.quantity, MAX(LI.image_url) AS image_url
@@ -10,17 +13,19 @@ WHERE OI.order_id=$order_id
 GROUP BY L.laptop_id, OI.quantity, L.description, L.price";
 $result = mysqli_query($conn, $sql);
 
-$sql_total_price = mysqli_query($conn, "SELECT total_price FROM orders WHERE order_id=$order_id");
-$result_total_price = mysqli_fetch_array($sql_total_price);
-$total_price = $result_total_price['total_price'];
-
-$result_status = mysqli_query($conn, "SELECT status FROM orders WHERE order_id=$order_id");
-$row = mysqli_fetch_assoc($result_status);
+$sql_total_price = mysqli_query($conn, "SELECT * FROM orders WHERE order_id=$order_id");
+$row = mysqli_fetch_array($sql_total_price);
+$total_price = $row['total_price'];
 $status = $row['status'];
 ?>
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/order_detail.css">
 <div class="main">
+    <div class="info-box">
+        <h3>Tên: <?php echo $row['full_name']; ?></h3>
+        <h3>Email: <?php echo $row['email']; ?></h3>
+        <h3>Địa chỉ: <?php echo $row['address']; ?></h3>
+    </div>
     <table>
         <thead>
             <tr>

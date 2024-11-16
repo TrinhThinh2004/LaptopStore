@@ -1,5 +1,6 @@
 <?php
 include_once("../includes/connect.php");
+// include("get_revenue.php");
 ?>
 
 <link rel="stylesheet" href="../assets/css/admin/dashboard.css">
@@ -26,7 +27,7 @@ include_once("../includes/connect.php");
 
         <div class="dashboard">
             <!-- Dashboard Cards -->
-            <div class="cards-container" id="cards">
+            <!-- <div class="cards-container" id="cards">
                 <div class="cards">
                     <div class="card">
                         <div class="card-icon"><i class="fas fa-laptop"></i></div>
@@ -53,7 +54,11 @@ include_once("../includes/connect.php");
                         </div>
                     </a>
                 </div>
-            </div>
+            </div> -->
+
+            <?php
+            include("get_revenue.php");
+            ?>
 
             <!-- User Management -->
             <div class="content" id="userManagement" style="display: none;">

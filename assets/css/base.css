@@ -27,6 +27,12 @@ body {
     border-radius: 20px;
 }
 
+.btn:hover {
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    color: white;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -41,4 +47,8 @@ td {
 
 th {
     background: #F5F5F5;
+}
+
+input {
+    border-radius: 5px;
 }

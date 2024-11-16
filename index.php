@@ -41,7 +41,9 @@
       case 'cancel':
         include('cancel.php');
         break;
-
+      case 'change_pass':
+        include('change_pass.php');
+        break;
       default:
         include('home.php');
     }
