@@ -195,3 +195,14 @@ td {
 #editUser td[colspan="2"], #addProduct td[colspan="2"] {
   text-align: center;
 }
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.preview img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}

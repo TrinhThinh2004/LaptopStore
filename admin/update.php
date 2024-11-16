@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
 
     // Thêm sản phẩm mới
-    if ($_POST['action'] == 'add' && isset($_POST['productname'], $_POST['brand'], $_POST['cpu'], $_POST['gpu'], $_POST['ram'], $_POST['ram_type'], $_POST['ram_speed'], $_POST['screen_size'], $_POST['screen_resolution'], $_POST['screen_refresh_rate'], $_POST['storage'], $_POST['storage_type'], $_POST['price'], $_POST['stock_quantity'])) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'add' && isset($_POST['productname'], $_POST['brand'], $_POST['cpu'], $_POST['gpu'], $_POST['ram'], $_POST['ram_type'], $_POST['ram_speed'], $_POST['screen_size'], $_POST['screen_resolution'], $_POST['screen_refresh_rate'], $_POST['storage'], $_POST['storage_type'], $_POST['price'], $_POST['stock_quantity'])) {
 
         // Lấy dữ liệu từ form
         $productname = $conn->real_escape_string($_POST['productname']);
@@ -85,22 +85,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
         $price = floatval($_POST['price']);
         $stock_quantity = intval($_POST['stock_quantity']);
 
-        // Xử lý ảnh tải lên nếu cần thiết
-        $image = ''; // Thêm mã xử lý ảnh nếu cần
+        // Xử lý ảnh tải lên
+        $image = '';
+        if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+            $image = 'uploads/' . basename($_FILES['image']['name']);
+            move_uploaded_file($_FILES['image']['tmp_name'], $image);
+        }
+
+        // Xử lý ảnh chi tiết
+        $multiImages = [];
+        if (isset($_FILES['images'])) {
+            foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
+                if ($_FILES['images']['error'][$key] == 0) {
+                    $multiImagePath = 'uploads/' . basename($_FILES['images']['name'][$key]);
+                    move_uploaded_file($tmp_name, $multiImagePath);
+                    $multiImages[] = $multiImagePath;
+                }
+            }
+        }
 
         // Thêm sản phẩm mới vào bảng `laptops`
         $insertSql = "INSERT INTO laptops (description, brand, cpu, gpu, ram, ram_type, ram_speed, screen_size, screen_resolution, screen_refresh_rate, storage, storage_type, price, stock_quantity)
-                      VALUES ('$productname', '$brand', '$cpu', '$gpu', $ram, '$ram_type', '$ram_speed', '$screen_size', '$screen_resolution', '$screen_refresh_rate', $storage, '$storage_type', $price, $stock_quantity)";
-
+                  VALUES ('$productname', '$brand', '$cpu', '$gpu', $ram, '$ram_type', '$ram_speed', '$screen_size', '$screen_resolution', '$screen_refresh_rate', $storage, '$storage_type', $price, $stock_quantity)";
+        $insertSql1 = "INSERT INTO laptop_images (image_url) VALUES ('$image')";
         if ($conn->query($insertSql) === TRUE) {
             echo "<script>
-                    alert('Sản phẩm mới đã được thêm thành công.');
-                    window.location.href = 'product_management.php';
-                  </script>";
+                alert('Sản phẩm mới đã được thêm thành công.');
+                window.location.href = 'dashboard.php'; // Đường dẫn bạn muốn chuyển hướng
+              </script>";
         } else {
-            echo "Lỗi khi thêm sản phẩm: " . $conn->error;
+            echo "Lỗi: " . $conn->error;
         }
     }
+
 
     $conn->close();
 }

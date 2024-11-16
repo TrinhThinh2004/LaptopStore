@@ -111,3 +111,30 @@ document.addEventListener('DOMContentLoaded', function () {
     hideAllSections();
     document.getElementById("cards").style.display = 'block'; // Hiển thị phần 'cards'
 });
+
+function previewImages(input, previewContainer) {
+    previewContainer.innerHTML = ''; // Xóa preview cũ
+    const files = input.files;
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            previewContainer.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+document.getElementById('addImage').addEventListener('change', function() {
+    const previewContainer = document.getElementById('imagePreview');
+    previewImages(this, previewContainer);
+});
+
+document.getElementById('addMultiImage').addEventListener('change', function() {
+    const previewContainer = document.getElementById('multiImagePreview');
+    previewImages(this, previewContainer);
+});

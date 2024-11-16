@@ -1,5 +1,12 @@
 <?php
 include_once("../includes/connect.php");
+
+if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
+    header("Location: dashboard.php");
+} else {
+    // Nếu vai trò là 0 (user), chuyển hướng đến trang user
+    header("Location: index.php");
+}
 ?>
 
 <link rel="stylesheet" href="../assets/css/admin/dashboard.css">
@@ -185,8 +192,18 @@ include_once("../includes/connect.php");
                 <form id="addProductForm" method="post">
                     <table>
                         <tr>
-                            <td>Ảnh</td>
-                            <td><input id="addImage" name="image" type="file" accept="image/*"></td>
+                            <td>Ảnh sản phẩm</td>
+                            <td>
+                                <input id="addImage" name="image" type="file" accept="image/*">
+                                <div class="preview" id="imagePreview"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ảnh chi tiết</td>
+                            <td>
+                                <input id="addMultiImage" name="images" type="file" accept="image/*" multiple>
+                                <div class="preview" id="multiImagePreview"></div>
+                            </td>
                         </tr>
                         <tr>
                             <td>Tên sản phẩm:</td>
