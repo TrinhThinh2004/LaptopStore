@@ -7,12 +7,15 @@ if (isset($_GET['word'])) {
     $sql_word = " AND laptops.description LIKE '%$word%' ";
 }
 
+
 $brand = "";
 $sql_brand = "";
 if (isset($_GET['brand'])) {
     $brand_value = $_GET['brand'];
     $sql_brand = "AND laptops.brand = '$brand_value'";
     $brand = "&brand=" . $brand_value;
+    $_SESSION['brand'] = $brand;
+    $_SESSION['sql_brand'] = $sql_brand;
 }
 
 // Kiểm tra bộ lọc cho giá
@@ -20,6 +23,7 @@ $sql_price = "";
 $min = 0;
 if (isset($_GET['price']) && $_GET['price'] != "") {
     $price_value = (int)$_GET['price'];
+
     if ($price_value > 15000000 && $price_value != 1000000000) {
         $min = $price_value - 5000000;
     } elseif ($price_value == 1000000000) {
@@ -44,7 +48,10 @@ if (isset($_GET['storage']) && $_GET['storage'] != "") {
 
 $sql_category = "";
 if (isset($_GET['category']) && $_GET['category'] != "") {
+    $tag = true;
     $category_value = (int)$_GET['category'];
+    $r_cate = mysqli_query($conn, "SELECT category_name FROM categories WHERE category_id=$category_value");
+    $row_cate = mysqli_fetch_array($r_cate);
     $sql_category = " AND laptop_categories.category_id = $category_value"; // Thêm điều kiện vào mảng
 }
 
@@ -106,6 +113,7 @@ $result_storage = mysqli_query($conn, $sql_get_storage);
 <div class="filter-section">
     <form action="index.php" method="GET" id="filter">
         <input type="hidden" name="act" value="products">
+        <input type="hidden" name="brand" value="<?php echo $brand_value; ?>">
         <div>
             <h3>Giá:
                 <select name="price">

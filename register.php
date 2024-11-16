@@ -30,30 +30,36 @@ if (isset($_POST['submit'])) {
 }
 ?>
 <link rel="stylesheet" href="assets/css/register.css">
-    <div class="signup-container">
-        <h2>Đăng Ký</h2>
-        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
-            <label for="username">Tên đăng nhập</label>
-            <input type="text" id="username" name="username" required>
+<script src="assets/js/validation.js"></script>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+<div class="signup-container">
+    <h2>Đăng Ký</h2>
+    <form method="POST" id="register-form">
+        <label for="username">Tên đăng nhập</label>
+        <input type="text" id="username" name="username" autocomplete="username">
+        <span style="color:red" id="username_error"></span>
 
-            <label for="password">Mật khẩu</label>
-            <input type="password" id="password" name="password" required>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" autocomplete="email">
+        <span style="color:red" id="email_error"></span>
 
-            <label for="confirm-password">Xác nhận mật khẩu</label>
-            <input type="password" id="confirm-password" name="confirm_password" required>
+        <label for="password">Mật khẩu</label>
+        <input type="password" id="password" name="password" autocomplete="new-password">
+        <span style="color:red" id="password_error"></span>
 
-            <button type="submit" name="submit">Đăng Ký</button>
+        <label for="confirm-password">Xác nhận mật khẩu</label>
+        <input type="password" id="confirm_password" name="confirm_password" autocomplete="new-password">
+        <span style="color:red" id="confirm_password_error"></span>
 
-            <?php
-            if (isset($message) && $message != '') {
-                echo "<div style='color: red; text-align: center; margin-top:20px'>" . $message . "</div>";
-            }
-            ?>
-        </form>
-        <div class="login-link">
-            Đã có tài khoản? <a href="login.php">Đăng nhập ngay</a>
-        </div>
+        <button type="submit" name="submit">Đăng Ký</button>
+
+        <?php
+        if (isset($message) && $message != '') {
+            echo "<div style='color: red; text-align: center; margin-top:20px'>" . $message . "</div>";
+        }
+        ?>
+    </form>
+    <div class="login-link">
+        Đã có tài khoản? <a href="login.php">Đăng nhập ngay</a>
     </div>
+</div>
