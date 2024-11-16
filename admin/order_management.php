@@ -17,24 +17,35 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['total_price']) . "</td>";
         echo "<td>" . htmlspecialchars($row['payment_method'] == 1 ? "Tiền mặt" : "Ngân hàng") . "</td>";
         echo "<td>" . htmlspecialchars($row['quantity']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['status'] == 0 ? "Chưa xác nhận" : "Đã xác nhận") . "</td>";
+        echo "<td>" . htmlspecialchars(
+            $row['status'] == 1 ? "Chưa xác nhận" : ($row['status'] == 2 ? "Đang giao" : "Đã giao")
+        ) . "</td>";
+
         echo "<td></td>";
-        if ($row['status'] == 0) {
+        if ($row['status'] == 1) {
             echo "<td>
-                <div style='text-align: center; color: red; cursor:pointer;'>
+                <div style='text-align: center; cursor:pointer;'>
                     <a href='confirm_order.php?order_id=" . htmlspecialchars($row['order_id']) . "' onclick='return confirm(\"Xác nhận đơn hàng?\");'>
-                        <i class='fa-solid fa-check'></i>
+                        <button>Xác nhận</button>
+                    </a>
+                </div>
+            </td>";
+        } elseif ($row['status'] == 2) {
+            echo "<td>
+                <div style='text-align: center; cursor:pointer;'>
+                    <a href='confirm_order.php?order_id=" . htmlspecialchars($row['order_id']) . "' onclick='return confirm(\"Hoàn thành đơn hàng?\");'>
+                        <button>Hoàn thành</button>
                     </a>
                 </div>
             </td>";
         } else {
             echo "<td>
-                <div style='text-align: center; color: green; cursor: pointer;'>
-                    <a href='#' onclick='alert(\"Đơn hàng đã xác nhận\"); return false;'>
-                        <i class='fa-solid fa-check'></i>
-                    </a>
-                </div>
-            </td>";
+            <div style='text-align: center; color: green; cursor: pointer;'>
+                <a href='#'>
+                    <button onclick='return alert(\"Đơn hàng đã được giao\")'>Đã giao</button>
+                </a>
+            </div>
+        </td>";
         }
         echo "</tr>";
         $counter++;
@@ -42,4 +53,3 @@ if ($result->num_rows > 0) {
 } else {
     echo "<tr><td colspan='8'>Không có dữ liệu</td></tr>";
 }
-?>

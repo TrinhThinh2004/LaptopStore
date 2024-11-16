@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT L.brand, L.price, L.description, L.deleted, L.laptop_id, MAX(LI.image_url) AS image_url
+$sql = "SELECT L.brand, L.price, L.description, L.stock_quantity ,L.deleted, L.laptop_id, MAX(LI.image_url) AS image_url
 FROM laptops L 
 JOIN laptop_images LI ON L.laptop_id = LI.laptop_id
 WHERE L.deleted = 0
@@ -15,10 +15,9 @@ if ($result->num_rows > 0) {
         echo "<td>" . htmlspecialchars($row['description']) . "</td>";
         echo "<td>" . htmlspecialchars($row['brand']) . "</td>";
         echo "<td>" . htmlspecialchars($row['price']) . "</td>";
-        echo "<td></td>";
+        echo "<td>" . htmlspecialchars($row['stock_quantity']) . "</td>";
         echo "<td>
-             <div class='action-buttons' style='color: red; cursor:pointer'>
-                    <a href='#' onclick=\"showEditForm()\"><i class='fa-regular fa-pen-to-square'></i></a>
+             <div class='action-buttons' style='color: red; cursor:pointer; text-align: center;'>
                     <a href='#' onclick='deleteProduct(this)' data-laptopid='{$row['laptop_id']}'><i class='fa-regular fa-circle-xmark'></i></a>
             </div>
             </td>";
