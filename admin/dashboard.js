@@ -1,33 +1,68 @@
-function toggleDisplay(showId, hideId) {
-    document.getElementById(showId).style.display = 'block';
-    document.getElementById(hideId).style.display = 'none';
+// Ẩn tất cả các phần
+function hideAllSections() {
+    document.getElementById("userManagement").style.display = 'none';
+    document.getElementById("orderManagement").style.display = 'none';
+    document.getElementById("cards").style.display = 'none';
+    document.getElementById("productManagement").style.display = 'none';
+    document.getElementById("addProduct").classList.add("hidden");
+    document.getElementById("editUser").classList.add("hidden");
 }
 
+// Hiển thị một phần cụ thể
+function toggleDisplay(showId) {
+    hideAllSections();
+    document.getElementById(showId).style.display = 'block';
+}
+
+// Các hàm hiển thị từng phần cụ thể
 function showUserManagement() {
-    toggleDisplay('userManagement', 'orderManagement');
-    toggleDisplay('userManagement', 'cards');
-    toggleDisplay('userManagement', 'productsManagement');
+    toggleDisplay('userManagement');
 }
 
 function showOrderManagement() {
-    toggleDisplay('orderManagement', 'userManagement');
-    toggleDisplay('orderManagement', 'cards');
-    toggleDisplay('orderManagement', 'productsManagement');
+    toggleDisplay('orderManagement');
 }
 
 function showCards() {
-    toggleDisplay('cards', 'userManagement');
-    toggleDisplay('cards', 'orderManagement');
-    toggleDisplay('cards', 'productsManagement');
+    toggleDisplay('cards');
 }
 
-function showProductsManagement() {
-    toggleDisplay('productsManagement', 'userManagement')
-    toggleDisplay('productsManagement', 'orderManagement')
-    toggleDisplay('productsManagement', 'cards')
+function showProductManagement() {
+    toggleDisplay('productManagement');
 }
 
-//Xóa user
+function showAddProductForm(product = null) {
+    hideAllSections();
+    document.getElementById("addProduct").classList.remove("hidden");
+
+    // Reset form khi thêm sản phẩm mới
+    document.getElementById("addProductForm").reset();
+}
+
+function showEditForm(user) {
+    hideAllSections();
+    document.getElementById("editUsername").value = user.username;
+    document.getElementById("editFullname").value = user.full_name;
+    document.getElementById("editEmail").value = user.email;
+    document.getElementById("editPhone").value = user.phone_number;
+    document.getElementById("editAddress").value = user.address;
+    document.getElementById("editRole").value = user.role === "Admin" ? 1 : 0;
+
+    document.getElementById("editUser").classList.remove("hidden");
+}
+
+// Ẩn form khi ấn hủy
+function hideEditForm() {
+    document.getElementById("userManagement").style.display = "block";
+    document.getElementById("editUser").classList.add("hidden");
+}
+
+function hideEdit() {
+    document.getElementById("productManagement").style.display = "block";
+    document.getElementById("addProduct").classList.add("hidden");
+}
+
+// Xóa user
 function deleteUser(anchorElement) {
     if (confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
         var userid = anchorElement.getAttribute("data-userid");
@@ -49,57 +84,7 @@ function deleteUser(anchorElement) {
     }
 }
 
-function showEditForm(user) {
-    document.getElementById("editUsername").value = user.username;
-    document.getElementById("editFullname").value = user.full_name;
-    document.getElementById("editEmail").value = user.email;
-    document.getElementById("editPhone").value = user.phone_number;
-    document.getElementById("editAddress").value = user.address;
-    document.getElementById("editRole").value = user.role === "Admin" ? 1 : 0;
-
-    document.getElementById("userManagement").style.display = "none";
-    document.getElementById("editUser").classList.remove("hidden");
-}
-
-//Ẩn form khi ấn hủy
-function hideEditForm() {
-    document.getElementById("userManagement").style.display = "block";
-    document.getElementById("editUser").classList.add("hidden");
-}
-
-document.getElementById("editUserForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    const formData = new FormData(this);
-    formData.append("action", "update");
-
-    fetch(window.location.href, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.text(); // Only parse response if successful
-            } else {
-                throw new Error('Network response was not ok.');
-            }
-        })
-        .then(data => {
-            alert(data);
-            hideEditForm();
-            location.reload();
-        })
-        .catch(error => {
-            alert("Cập nhật không thành công: " + error); // Display more specific error
-            console.error("Error during update:", error);
-        });
-});
-
-// Ẩn form khi load trang
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('editUser').classList.add('hidden');
-});
-
-//Xóa product
+// Xóa sản phẩm
 function deleteProduct(anchorElement) {
     if (confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
         var laptopid = anchorElement.getAttribute("data-laptopid");
@@ -120,3 +105,36 @@ function deleteProduct(anchorElement) {
         });
     }
 }
+
+// Ẩn tất cả các phần và hiển thị phần 'cards' khi load trang
+document.addEventListener('DOMContentLoaded', function () {
+    hideAllSections();
+    document.getElementById("cards").style.display = 'block'; // Hiển thị phần 'cards'
+});
+
+function previewImages(input, previewContainer) {
+    previewContainer.innerHTML = ''; // Xóa preview cũ
+    const files = input.files;
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            previewContainer.appendChild(img);
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+document.getElementById('addImage').addEventListener('change', function() {
+    const previewContainer = document.getElementById('imagePreview');
+    previewImages(this, previewContainer);
+});
+
+document.getElementById('addMultiImage').addEventListener('change', function() {
+    const previewContainer = document.getElementById('multiImagePreview');
+    previewImages(this, previewContainer);
+});

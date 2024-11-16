@@ -27,8 +27,7 @@ $order_result = mysqli_query($conn, $sql);
                     <td><?php if ($o['payment_method'] == 1) echo "Tiền mặt";
                         else echo "Ngân hàng" ?></td>
                     <td><?php
-                        if ($o['status'] == 0) echo "Đang chờ xác nhận";
-                        elseif ($o['status'] == 1) echo "Đã xác nhận";
+                        if ($o['status'] == 1) echo "Đang chờ xác nhận";
                         elseif ($o['status'] == 2) echo "Đang giao";
                         elseif ($o['status'] == 3) echo "Đã giao thành công";
                         else echo "Đã hủy" ?></td>
