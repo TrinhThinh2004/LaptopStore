@@ -2,7 +2,7 @@
 function hideAllSections() {
     document.getElementById("userManagement").style.display = 'none';
     document.getElementById("orderManagement").style.display = 'none';
-    document.getElementById("cards").style.display = 'none';
+    document.getElementById("get_revenue").style.display = 'none';
     document.getElementById("productManagement").style.display = 'none';
     document.getElementById("addProduct").classList.add("hidden");
     document.getElementById("editUser").classList.add("hidden");
@@ -23,8 +23,8 @@ function showOrderManagement() {
     toggleDisplay('orderManagement');
 }
 
-function showCards() {
-    toggleDisplay('cards');
+function showRevenue() {
+    toggleDisplay('get_revenue');
 }
 
 function showProductManagement() {
@@ -106,10 +106,9 @@ function deleteProduct(anchorElement) {
     }
 }
 
-// Ẩn tất cả các phần và hiển thị phần 'cards' khi load trang
 document.addEventListener('DOMContentLoaded', function () {
     hideAllSections();
-    document.getElementById("cards").style.display = 'block'; // Hiển thị phần 'cards'
+    document.getElementById("get_revenue").style.display = 'block'; 
 });
 
 function previewImages(input, previewContainer) {

@@ -20,7 +20,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
         <div class="admin-sidebar">
             <ul>
                 <li style="color: white;">Trang chủ Admin</li>
-                <li><a href="#" onclick="showCards()">Dashboard</a></li>
+                <li><a href="#" onclick="showRevenue()">Dashboard</a></li>
                 <li><a href="#" onclick="showProductManagement()">Quản lý sản phẩm</a></li>
                 <li><a href="#" onclick="showOrderManagement()">Quản lý đơn hàng</a></li>
                 <li><a href="#" onclick="showUserManagement()">Quản lý người dùng</a></li>
@@ -60,10 +60,11 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                     </a>
                 </div>
             </div> -->
-
+            <div class="get_revenue" id="get_revenue">
             <?php
             include("get_revenue.php");
             ?>
+            </div>
 
             <!-- User Management -->
             <div class="content" id="userManagement" style="display: none;">
