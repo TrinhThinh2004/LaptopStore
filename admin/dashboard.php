@@ -29,37 +29,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
         </div>
 
         <div class="dashboard">
-            <!-- Dashboard Cards -->
-            <!-- <div class="cards-container" id="cards">
-                <div class="cards">
-                    <a href="#" onclick="showProductManagement()">
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-laptop"></i></div>
-                            <p>120</p>
-                            <p>Sản phẩm</p>
-                        </div>
-                    </a>
-                    <a href="#" onclick="showOrderManagement()">
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
-                            <p>45</p>
-                            <p>Đơn hàng</p>
-                        </div>
-                    </a>
-                    <div class="card">
-                        <div class="card-icon"><i class="fas fa-dollar-sign"></i></div>
-                        <p>150,000,000 VND</p>
-                        <p>Doanh thu</p>
-                    </div>
-                    <a href="#" onclick="showUserManagement()">
-                        <div class="card">
-                            <div class="card-icon"><i class="fas fa-users"></i></div>
-                            <p>230</p>
-                            <p>Người dùng</p>
-                        </div>
-                    </a>
-                </div>
-            </div> -->
             <div class="get_revenue" id="get_revenue">
             <?php
             include("get_revenue.php");
