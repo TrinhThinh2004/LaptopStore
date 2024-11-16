@@ -160,7 +160,7 @@ td {
 }
 
 /* Định dạng cho các input và select trong form */
-#editUser input[type="text"], #addProduct input[type="text"],
+#editUser input[type="text"], #editUser input[type="email"], #addProduct input[type="text"],
 #editUser select, #addProduct select {
   width: calc(100% - 10px);
   padding: 5px;
