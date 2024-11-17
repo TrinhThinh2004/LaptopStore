@@ -96,7 +96,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã đơn hàng</th>
                             <th>Tên khách hàng</th>
                             <th>Ngày đặt hàng</th>
                             <th>Địa chỉ</th>

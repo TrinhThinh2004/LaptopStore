@@ -8,7 +8,6 @@ if ($result->num_rows > 0) {
         echo "<tr>";
         echo "<td>" . $counter . "</td>";
         echo "<td>" . htmlspecialchars($row['username']) . "</td>";
-        echo "<td>" . htmlspecialchars($row['password']) . "</td>";
         echo "<td>" . htmlspecialchars($row['email']) . "</td>";
         echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
         echo "<td>" . htmlspecialchars($row['phone_number']) . "</td>";

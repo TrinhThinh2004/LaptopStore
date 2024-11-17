@@ -77,7 +77,7 @@ if (isset($_GET['buy'])) {
                 <h3>Email</h3>
                 <input class="checkout-input" type="email" name="email" value="<?php echo $user['email'] ?>" required>
                 <h3>Số điện thoại</h3>
-                <input class="checkout-input" type="text" name="phone_number" value="<?php echo $user['phone_number'] ?>" required>
+                <input class="checkout-input" type="text" pattern="\d{10}" maxlength="10" name="phone_number" value="<?php echo $user['phone_number'] ?>" required>
                 <h3>Địa chỉ</h3>
                 <input class="checkout-input" type="text" name="address" value="<?php echo $user['address'] ?>" required>
                 <input type="hidden" name="total_price" value="<?php echo $total_price; ?>">
