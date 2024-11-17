@@ -30,9 +30,9 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
 
         <div class="dashboard">
             <div class="get_revenue" id="get_revenue">
-            <?php
-            include("get_revenue.php");
-            ?>
+                <?php
+                include("get_revenue.php");
+                ?>
             </div>
 
             <!-- User Management -->
@@ -45,7 +45,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         <tr>
                             <th>STT</th>
                             <th>Tên tài khoản</th>
-                            <th>Mật khẩu</th>
+                            <th class="pass">Mật khẩu</th>
                             <th>Email</th>
                             <th>Họ tên</th>
                             <th>Số điện thoại</th>
@@ -162,7 +162,8 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
             </div>
 
             <div class="addProduct hidden" id="addProduct">
-                <form id="addProductForm" method="post">
+                <form action="add_product.php" id="addProductForm" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="form_id" value="addProductForm">
                     <table>
                         <tr>
                             <td>Ảnh sản phẩm</td>
@@ -174,7 +175,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         <tr>
                             <td>Ảnh chi tiết</td>
                             <td>
-                                <input id="addMultiImage" name="images" type="file" accept="image/*" multiple>
+                                <input id="addMultiImage" name="images[]" type="file" accept="image/*" multiple>
                                 <div class="preview" id="multiImagePreview"></div>
                             </td>
                         </tr>
@@ -183,8 +184,24 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                             <td><input id="addProductName" name="productname" type="text"></td>
                         </tr>
                         <tr>
+                            <td>Phiên bản:</td>
+                            <td><input id="addModel" name="model" type="text"></td>
+                        </tr>
+                        <tr>
                             <td>Thương hiệu:</td>
                             <td><input id="addBrand" name="brand" type="text"></td>
+                        </tr>
+                        <tr>
+                            <td>Loại:</td>
+                            <td><select name="category" id="addCategory">
+                                    <option value="1">AI</option>
+                                    <option value="2">Gaming</option>
+                                    <option value="3">Học tập - Văn phòng</option>
+                                    <option value="4">Đồ họa</option>
+                                    <option value="5">Kỹ thuật</option>
+                                    <option value="6">Mỏng nhẹ</option>
+                                    <option value="7">Cao cấp</option>
+                                </select></td>
                         </tr>
                         <tr>
                             <td>CPU</td>
@@ -259,7 +276,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         </tr>
                         <tr>
                             <td>Giá</td>
-                            <td><input id="addPrice" name=price" type="text"></td>
+                            <td><input id="addPrice" name="price" type="text"></td>
                         </tr>
                         <tr>
                             <td>Số lượng</td>
@@ -267,7 +284,7 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         </tr>
                         <tr>
                             <td colspan="2" style="text-align: center;">
-                                <input type="submit" value="Lưu">
+                                <input type="submit" name="submit" value="Lưu">
                                 <input type="button" value="Hủy" onclick="hideEdit()">
                             </td>
                         </tr>

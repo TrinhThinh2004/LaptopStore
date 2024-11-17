@@ -107,31 +107,38 @@ td {
   margin-right: 10px;
 }
 
- button {
+button {
   padding: 8px 16px;
   background-color: lightskyblue;
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  font-size: 16px; /* Increases font size */
+  font-size: 16px;
+  /* Increases font size */
   font-weight: bold;
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effects */
 }
 
- button:hover {
-  background-color: deepskyblue; /* Changes color on hover */
-  transform: translateY(-2px); /* Moves button up slightly on hover */
+button:hover {
+  background-color: deepskyblue;
+  /* Changes color on hover */
+  transform: translateY(-2px);
+  /* Moves button up slightly on hover */
 }
 
 
 
 .hidden {
-  visibility: hidden; /* Make element invisible but still take up space */
-  position: absolute; /* Position off-screen if needed */
+  visibility: hidden;
+  /* Make element invisible but still take up space */
+  position: absolute;
+  /* Position off-screen if needed */
 }
 
 /* Áp dụng cho toàn bộ form */
-#editUser, #addProduct {
+#editUser,
+#addProduct {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -143,25 +150,31 @@ td {
 }
 
 /* Áp dụng cho bảng bên trong form */
-#editUser table, #addProduct table {
+#editUser table,
+#addProduct table {
   width: 100%;
   border-collapse: collapse;
 }
 
 /* Định dạng cho các ô trong bảng */
-#editUser td, #addProduct td {
+#editUser td,
+#addProduct td {
   padding: 10px;
   vertical-align: middle;
 }
 
-#editUser td:first-child, #addProduct td:first-child {
+#editUser td:first-child,
+#addProduct td:first-child {
   font-weight: bold;
   text-align: right;
 }
 
 /* Định dạng cho các input và select trong form */
-#editUser input[type="text"], #editUser input[type="email"], #addProduct input[type="text"],
-#editUser select, #addProduct select {
+#editUser input[type="text"],
+#editUser input[type="email"],
+#addProduct input[type="text"],
+#editUser select,
+#addProduct select {
   width: calc(100% - 10px);
   padding: 5px;
   border: 1px solid #ccc;
@@ -170,8 +183,10 @@ td {
 }
 
 /* Định dạng cho các nút */
-#editUser input[type="submit"], #addProduct input[type="submit"],
-#editUser input[type="button"], #addProduct input[type="button"] {
+#editUser input[type="submit"],
+#addProduct input[type="submit"],
+#editUser input[type="button"],
+#addProduct input[type="button"] {
   background-color: #4CAF50;
   color: white;
   padding: 8px 15px;
@@ -181,25 +196,31 @@ td {
   margin: 5px;
 }
 
-#editUser input[type="button"], #addProduct input[type="button"] {
+#editUser input[type="button"],
+#addProduct input[type="button"] {
   background-color: #f44336;
 }
 
 /* Hiệu ứng hover cho các nút */
-#editUser input[type="submit"]:hover, #addProduct input[type="submit"]:hover,
-#editUser input[type="button"]:hover, #addProduct input[type="button"]:hover {
+#editUser input[type="submit"]:hover,
+#addProduct input[type="submit"]:hover,
+#editUser input[type="button"]:hover,
+#addProduct input[type="button"]:hover {
   opacity: 0.8;
 }
 
 /* Định dạng ô chứa các nút */
-#editUser td[colspan="2"], #addProduct td[colspan="2"] {
+#editUser td[colspan="2"],
+#addProduct td[colspan="2"] {
   text-align: center;
 }
+
 .preview {
   display: flex;
   flex-wrap: wrap;
   margin-top: 10px;
 }
+
 .preview img {
   width: 100px;
   height: 100px;

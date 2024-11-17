@@ -11,7 +11,7 @@
                 <h2 class="sorry">Rất tiếc, hiện tại chúng tôi không có sản phẩm nào phù hợp với nhu cầu của bạn!</h2>
             </div>
         <?php }
-        while ($product = mysqli_fetch_array($query)) { ?>
+        while ($product = mysqli_fetch_array($result_lt_pro)) { ?>
             <a href="index.php?act=product_detail&id=<?php echo $product['laptop_id'] ?>" class="product-link">
                 <div class="product">
                     <img
@@ -40,25 +40,25 @@
         ?>
     </div>
     <?php if ($total_page > 1) { ?>
-    <div class="page-option">
-        <p>Trang:
-            <?php
-            // Thu thập các tham số GET hiện tại
-            $query_params = $_GET; // Lấy tất cả tham số hiện có
-            for ($i = 1; $i <= $total_page; $i++) {
-                $query_params['page'] = $i; // Cập nhật tham số 'page' cho từng liên kết
-                $query_string = http_build_query($query_params); // Tạo query string
+        <div class="page-option">
+            <p>Trang:
+                <?php
+                // Thu thập các tham số GET hiện tại
+                $query_params = $_GET; // Lấy tất cả tham số hiện có
+                for ($i = 1; $i <= $total_page; $i++) {
+                    $query_params['page'] = $i; // Cập nhật tham số 'page' cho từng liên kết
+                    $query_string = http_build_query($query_params); // Tạo query string
 
-                if ($page == $i) {
-                    // Hiển thị trang hiện tại (không tạo link)
-                    echo "<span class='now'>$i</span>";
-                } else {
-                    // Tạo liên kết cho các trang khác
-                    echo "<a href='index.php?$query_string'>$i</a>";
+                    if ($page == $i) {
+                        // Hiển thị trang hiện tại (không tạo link)
+                        echo "<span class='now'>$i</span>";
+                    } else {
+                        // Tạo liên kết cho các trang khác
+                        echo "<a href='index.php?$query_string'>$i</a>";
+                    }
                 }
-            }
-            ?>
-        </p>
-    </div>
-<?php } ?>
+                ?>
+            </p>
+        </div>
+    <?php } ?>
 </div>

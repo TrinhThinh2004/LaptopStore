@@ -2,16 +2,16 @@
 ob_start();
 include_once("includes/connect.php");
 
-$sql =
+$sql_lt =
   "SELECT laptops.laptop_id, laptops.price, laptops.description, MAX(laptop_images.image_url) AS image_url
 FROM laptops
 LEFT JOIN laptop_images ON laptops.laptop_id = laptop_images.laptop_id
 WHERE laptops.deleted = 0
-GROUP BY laptops.laptop_id DESC
+GROUP BY laptops.laptop_id
 ORDER BY laptops.laptop_id DESC
 LIMIT 10";
 
-$query = mysqli_query($conn, $sql);
+$query_lt = mysqli_query($conn, $sql_lt);
 
 include("includes/add_to_cart.php");
 
@@ -39,7 +39,7 @@ include("includes/add_to_cart.php");
 
   <div class="product-container">
     <?php
-    while ($product = mysqli_fetch_array($query)) { ?>
+    while ($product = mysqli_fetch_array($query_lt)) { ?>
       <a href="index.php?act=product_detail&id=<?php echo $product['laptop_id'] ?>" class="product-link">
         <div class="product">
           <img

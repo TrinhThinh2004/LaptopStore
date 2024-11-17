@@ -63,9 +63,7 @@ $sql_count = "SELECT COUNT(DISTINCT laptops.laptop_id) AS total
 FROM laptops 
 LEFT JOIN laptop_categories ON laptops.laptop_id = laptop_categories.laptop_id
 WHERE deleted=0 $sql_conditions";
-// if (isset($_GET['word'])) $sql_count .= $sql_word;
-// else $sql_count .= $sql_brand . $sql_price . $sql_category . $sql_ram . $sql_storage;
-// $sql_count .= $sql_word . $sql_brand . $sql_price . $sql_category . $sql_ram . $sql_storage;
+
 $result_num = mysqli_query($conn, $sql_count);
 $row = mysqli_fetch_assoc($result_num);
 $num_of_laptop = $row['total'];
@@ -75,25 +73,8 @@ $total_page = ceil($num_of_laptop / $pro_per_page);
 if (isset($_GET['page'])) $page = $_GET['page'];
 else $page = 1;
 $index = ($page - 1) * $pro_per_page;
-// $sql = "SELECT laptop_categories.category_id, 
-//     laptops.laptop_id, laptops.price, laptops.description, laptops.ram_capacity, laptops.storage, 
-//     MAX(laptop_images.image_url) AS image_url
-// FROM laptops
-// LEFT JOIN laptop_images ON laptops.laptop_id = laptop_images.laptop_id
-// JOIN laptop_categories ON laptops.laptop_id = laptop_categories.laptop_id
-// WHERE laptops.deleted = 0 ";
 
-// if (isset($_GET['word'])) $sql .= $sql_word;
-// else $sql .= $sql_brand . $sql_price . $sql_category . $sql_ram . $sql_storage;
-
-// $sql .= "
-// GROUP BY laptops.laptop_id
-// ORDER BY laptops.laptop_id DESC
-// LIMIT $index, $pro_per_page";
-
-// $query = mysqli_query($conn, $sql);
-
-$sql = "SELECT laptop_categories.category_id, 
+$sql_lt_pro = "SELECT laptop_categories.category_id, 
                laptops.laptop_id, laptops.price, laptops.description, laptops.ram_capacity, laptops.storage, 
                MAX(laptop_images.image_url) AS image_url
         FROM laptops
@@ -103,7 +84,7 @@ $sql = "SELECT laptop_categories.category_id,
         GROUP BY laptops.laptop_id
         ORDER BY laptops.laptop_id DESC
         LIMIT $index, $pro_per_page";
-$query = mysqli_query($conn, $sql);
+$result_lt_pro = mysqli_query($conn, $sql_lt_pro);
 
 $sql_get_cate = "SELECT * FROM categories";
 $result_cate = mysqli_query($conn, $sql_get_cate);
