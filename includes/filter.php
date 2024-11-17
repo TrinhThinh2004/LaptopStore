@@ -12,7 +12,7 @@ $brand = "";
 $sql_brand = "";
 if (isset($_GET['brand'])) {
     $brand_value = $_GET['brand'];
-    $sql_brand = "AND laptops.brand = '$brand_value'";
+    $sql_brand = " AND laptops.brand = '$brand_value'";
     $brand = "&brand=" . $brand_value;
     $_SESSION['brand'] = $brand;
     $_SESSION['sql_brand'] = $sql_brand;
@@ -114,7 +114,6 @@ if (isset($_GET['brand'])) {
 <div class="filter-section">
     <form action="index.php" method="GET" id="filter">
         <input type="hidden" name="act" value="products">
-        <input type="hidden" name="brand" value="<?php echo $brand_value; ?>">
         <div>
             <h3>Giá:
                 <select name="price">
