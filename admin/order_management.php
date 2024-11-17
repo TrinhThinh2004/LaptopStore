@@ -10,7 +10,6 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $counter . "</td>";
-        echo "<td>" . htmlspecialchars($row['order_id']) . "</td>";
         echo "<td>" . htmlspecialchars($row['full_name']) . "</td>";
         echo "<td>" . htmlspecialchars($row['order_date']) . "</td>";
         echo "<td>" . htmlspecialchars($row['address']) . "</td>";
