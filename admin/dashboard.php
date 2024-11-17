@@ -38,7 +38,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
             <!-- User Management -->
             <div class="content" id="userManagement" style="display: none;">
                 <div class="search-container">
-                    <input type="text" placeholder="Tìm kiếm">
                 </div>
                 <table>
                     <thead>
@@ -63,7 +62,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
 
             <div class="content" id="productManagement" style="display: none;">
                 <div class="search-container">
-                    <input type="text" placeholder="Tìm kiếm">
                     <button onclick="showAddProductForm()">Thêm</button>
                 </div>
                 <table>
@@ -89,7 +87,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
             <!-- Order Management -->
             <div class="content" id="orderManagement" style="display: none;">
                 <div class="search-container">
-                    <input type="text" placeholder="Tìm kiếm">
                 </div>
                 <table>
                     <thead>
