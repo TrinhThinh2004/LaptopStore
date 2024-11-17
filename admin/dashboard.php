@@ -45,7 +45,6 @@ if (isset($_SESSION['role']) && $_SESSION['role'] == 1) {
                         <tr>
                             <th>STT</th>
                             <th>Tên tài khoản</th>
-                            <th>Mật khẩu</th>
                             <th>Email</th>
                             <th>Họ tên</th>
                             <th>Số điện thoại</th>

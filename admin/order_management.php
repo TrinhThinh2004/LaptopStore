@@ -1,5 +1,5 @@
 <?php
-$order = "SELECT O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity, O.order_id 
+$order = "SELECT O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity
 FROM orders O
 JOIN order_items OI ON O.order_id = OI.order_id
 GROUP BY O.order_id, O.full_name, O.address, O.order_date, O.total_price, O.payment_method, O.status, OI.quantity";
