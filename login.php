@@ -55,12 +55,6 @@ function login_success($user)
 <link rel="stylesheet" href="assets/css/login.css">
 
 <div class="login-container">
-    Vô admin:
-    username: admin, password: admin <br>
-    Vô user:
-    username: user1, password: user1
-    username: user2, password: user2
-
     <h2>Đăng Nhập</h2>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
         <label for="username">Tên đăng nhập</label>
