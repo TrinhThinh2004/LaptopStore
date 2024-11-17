@@ -161,11 +161,27 @@ INSERT INTO Laptops (brand, model, processor, ram_capacity, ram_type, ram_speed,
 ('Apple', 'apple_macbook_air_13_inch_m3', 'Apple M3', 8, 'Unified Memory', 'Hang khong cong bo', 512, 'SSD', 'Apple M3', '13.6 inches', '2560 x 1664', '60Hz', 31590000, 400, 'Laptop Apple MacBook Air 13 inch M3 8GB/512GB (MRXW3SA/A)');
 
 
-INSERT INTO Users (username, password, email, full_name, phone_number, address, role)
-VALUES 
-('admin', 'admin', 'admin@laptop4u.com', 'Admin', '0911118888', '123, Tô Ký, Quận 12, TP.HCM', 1),
-('user1', '111111', 'user1@gmail.com', 'Bảo Lan', '0987654321', '2 Võ Oanh, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh', 0),
-('user2', '111111', 'user2@gmail.com', 'Hải', '0987654321', 'Tân Phong, Giá Rai, Bạc Liêu', 0);
+INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `full_name`, `phone_number`, `address`, `role`, `created_at`, `updated_at`, `deleted`) VALUES
+(1, 'admin', 'admin', 'admin@laptop4u.com', 'Admin', '0911118888', '123, Tô Ký, Quận 12, TP.HCM', 1, '2024-11-15 21:19:09', '2024-11-15 21:19:09', 0),
+(2, 'user1', 'user1', 'user@hotmail.com', 'John Doeaa12345678', '1234567890', '456 John Ave', 0, '2024-11-15 21:19:09', '2024-11-15 21:19:09', 0),
+(3, 'teo', 'teo123', 'teo@example.com', 'Tèo', '0987654321', 'Quận 1, TPHCM', 0, '2024-11-15 21:19:09', '2024-11-15 21:19:09', 0),
+(4, 'test', 'test', 'test@gmail.com', 'Test', '1234566789', '456 John Ave', 0, '2024-11-17 10:17:42', '2024-11-17 10:21:24', 0),
+(5, 'tu', 'tu1234', 'tu@gmail.com', 'Tú', '4569873216', 'Quận Bình Tân, TPHCM', 0, '2024-11-17 10:47:20', '2024-11-17 10:47:20', 0),
+(6, 'phu', 'phu123', 'phu@gmail.com', 'Phú', '1658794622', 'Quận 3, TPHCM', 0, '2024-11-17 10:58:58', '2024-11-17 10:59:43', 0),
+(7, 'bao', 'bao123', 'boa@gmail.com', 'Bảo', '1954161615', 'Quận 4, TPHCM', 0, '2024-11-17 11:01:24', '2024-11-17 11:02:09', 0),
+(8, 'phong', 'phong123', 'phong@gmail.com', 'Phong', '1818145148', 'Quận 4, TPHCM', 0, '2024-11-17 11:03:36', '2024-11-17 11:04:24', 0),
+(9, 'tuan', 'tuan123', 'tuan@gmail.com', 'Tuấn', '1658794622', 'Quận 5, TPHCM', 0, '2024-11-17 11:04:58', '2024-11-17 11:05:19', 0),
+(10, 'minh', 'minh123', 'minh@gmail.com', 'Minh', '4849441261', 'Quận 6, TPHCM', 0, '2024-11-17 11:07:07', '2024-11-17 11:07:44', 0),
+(11, 'thinh', 'thinh123', 'thinh@gmail.com', 'Thịnh', '1646465156', 'Quận 7, TPHCM', 0, '2024-11-17 11:08:16', '2024-11-17 11:08:59', 0),
+(12, 'tien', 'tien123', 'tien@gmail.com', 'Tiến', '4545454612', 'Quận 8, TPHCM', 0, '2024-11-17 11:09:52', '2024-11-17 11:10:17', 0),
+(13, 'phuc', 'phuc123', 'phuc@gmail.com', 'Phúc', '5465461132', 'Quận 8, TPHCM', 0, '2024-11-17 11:10:50', '2024-11-17 11:11:17', 0),
+(14, 'phat', 'phat123', 'phat@gmail.com', 'Phát', '4654564166', 'Quận 9, TPHCM', 0, '2024-11-17 11:15:51', '2024-11-17 11:17:08', 0),
+(15, 'luan', 'luan123', 'luan@gmail.com', 'Luân', '2161546516', 'Quận 10, TPHCM', 0, '2024-11-17 11:20:08', '2024-11-17 11:20:38', 0),
+(16, 'huy', 'huy123', 'huy@gmail.com', 'Huy', '4894654611', 'Quận 11, TPHCM', 0, '2024-11-17 11:22:15', '2024-11-17 11:25:10', 0),
+(17, 'thang', 'thang123', 'thang@gmail.com', 'Thắng', '5644646515', 'Quận 12, TPHCM', 0, '2024-11-17 11:28:04', '2024-11-17 11:28:38', 0),
+(18, 'hieu', 'hieu123', 'hieu@gmail.com', 'Hiếu', '5646546123', 'Quận 12, TPHCM', 0, '2024-11-17 11:30:49', '2024-11-17 11:34:55', 0),
+(19, 'thanh', 'thanh123', 'thanh@gmail.com', 'Thành', '4594644646', 'Quận Bình Thạnh, TPHCM', 0, '2024-11-17 11:38:42', '2024-11-17 11:42:39', 0),
+(20, 'nhung', 'nhung123', 'nhung@gmail.com', 'Nhung', '5646123156', 'Quận Gò Vấp, TPHCM', 0, '2024-11-17 11:43:14', '2024-11-17 11:43:47', 0);
 
 
 INSERT INTO Categories (category_name, description)
@@ -485,3 +501,29 @@ VALUES
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/2.jpg'),
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/3.jpg'),
 ('42','assets/images/apple/apple_macbook_air_13_inch_m3/4.jpg');
+
+INSERT INTO `orders` (`order_id`, `user_id`, `total_price`, `order_date`, `status`, `payment_method`, `email`, `full_name`, `phone_number`, `address`) VALUES
+(1, 2, 31590000.00, '2023-11-16 06:47:09', 3, 1, 'user1@example.com', 'John Doe', '0987654321', '456 John Ave'),
+(2, 2, 31590000.00, '2023-10-16 21:01:58', 3, 1, 'user1@example.com', 'John Doeaa12345', '0987654321', '456 John Ave'),
+(3, 2, 41990000.00, '2023-12-16 21:18:06', 3, 1, 'user1@example.com', 'John Doeaa12345', '0987654321', '456 John Ave'),
+(18, 4, 36990000.00, '2024-11-17 10:26:09', 3, 1, 'test@gmail.com', 'Test', '1234566789', '456 John Ave'),
+(19, 4, 48990000.00, '2024-11-17 10:26:12', 3, 1, 'test@gmail.com', 'Test', '1234566789', '456 John Ave'),
+(20, 4, 27990000.00, '2024-11-17 10:26:23', 3, 1, 'test@gmail.com', 'Test', '1234566789', '456 John Ave'),
+(21, 3, 59690000.00, '2023-01-17 10:43:49', 3, 1, 'teo@example.com', 'Tèo', '0987654321', 'Quận 1, TPHCM'),
+(25, 3, 14290000.00, '2023-02-17 10:44:31', 3, 1, 'teo@example.com', 'Tèo', '0987654321', 'Quận 1, TPHCM'),
+(26, 5, 36990000.00, '2022-12-17 10:48:28', 3, 1, 'tu@gmail.com', 'Tú', '1562324565', 'Quận 2, TPHCM'),
+(27, 6, 36990000.00, '2023-05-17 10:59:50', 3, 1, 'phu@gmail.com', 'Phú', '1658794622', 'Quận 3, TPHCM'),
+(28, 6, 30990000.00, '2022-11-17 10:59:53', 3, 1, 'phu@gmail.com', 'Phú', '1658794622', 'Quận 3, TPHCM'),
+(29, 7, 30990000.00, '2023-06-17 11:02:14', 3, 1, 'boa@gmail.com', 'Bảo', '1954161615', 'Quận 4, TPHCM'),
+(30, 7, 48990000.00, '2023-09-17 11:02:18', 3, 1, 'boa@gmail.com', 'Bảo', '1954161615', 'Quận 4, TPHCM'),
+(31, 8, 12490000.00, '2023-03-17 11:04:30', 3, 1, 'phong@gmail.com', 'Phong', '1818145148', 'Quận 4, TPHCM'),
+(32, 10, 41990000.00, '2022-09-17 11:07:50', 3, 1, 'minh@gmail.com', 'Minh', '4849441261', 'Quận 6, TPHCM'),
+(33, 11, 25590000.00, '2024-10-17 11:09:32', 3, 1, 'thinh@gmail.com', 'Thịnh', '1646465156', 'Quận 7, TPHCM'),
+(34, 12, 30990000.00, '2024-09-17 11:10:24', 3, 1, 'tien@gmail.com', 'Tiến', '4545454612', 'Quận 8, TPHCM'),
+(35, 13, 19490000.00, '2024-08-17 11:11:27', 3, 1, 'phuc@gmail.com', 'Phúc', '5465461132', 'Quận 8, TPHCM'),
+(36, 14, 18990000.00, '2024-07-17 11:17:28', 3, 1, 'phat@gmail.com', 'Phát', '4654564166', 'Quận 9, TPHCM'),
+(37, 15, 38190000.00, '2024-06-17 11:20:56', 3, 1, 'luan@gmail.com', 'Luân', '2161546516', 'Quận 10, TPHCM'),
+(38, 16, 30990000.00, '2024-05-17 11:25:34', 3, 1, 'huy@gmail.com', 'Huy', '4894654611', 'Quận 11, TPHCM'),
+(39, 17, 48990000.00, '2024-04-17 11:29:50', 3, 1, 'thang@gmail.com', 'Thắng', '5644646515', 'Quận 12, TPHCM'),
+(40, 18, 36990000.00, '2024-03-17 11:38:04', 3, 1, 'hieu@gmail.com', 'Hiếu', '5646546123', 'Quận 12, TPHCM'),
+(41, 20, 27990000.00, '2024-02-17 11:43:53', 3, 1, 'nhung@gmail.com', 'Nhung', '5646123156', 'Quận Gò Vấp, TPHCM');
