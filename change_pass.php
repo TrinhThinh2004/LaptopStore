@@ -21,19 +21,29 @@ if (isset($_POST['change_pass'])) {
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_array($result);
 
-    if ($user['username'] == $username && $user['password'] = $old_pass) {
-        $sql_change = "UPDATE users SET password='$new_pass', updated_at=NOW() WHERE user_id=$user_id";
-        $result_change = mysqli_query($conn, $sql_change);
-        header("Location: index.php?act=change_pass");
-        if ($result_change) {
-            $_SESSION['message'] = "Đổi mật khẩu thành công!";
+    if ($user && $user['username'] === $username) {
+        // Kiểm tra mật khẩu cũ
+        if (password_verify($old_pass, $user['password'])) {
+            // Mã hóa mật khẩu mới
+            $hashed_new_pass = password_hash($new_pass, PASSWORD_BCRYPT);
+
+            // Cập nhật mật khẩu mới
+            $sql_change = "UPDATE users SET password='$hashed_new_pass', updated_at=NOW() WHERE user_id=$user_id";
+            $result_change = mysqli_query($conn, $sql_change);
+
+            if ($result_change) {
+                $_SESSION['message'] = "Đổi mật khẩu thành công!";
+            } else {
+                $_SESSION['message'] = "Lỗi đổi mật khẩu: " . mysqli_error($conn);
+            }
         } else {
-            $_SESSION['message'] = "Lỗi đổi mật khẩu: " . mysqli_error($conn);
+            $_SESSION['message'] = "Mật khẩu cũ không chính xác!";
         }
     } else {
-        $_SESSION['message'] = "Tên đăng nhập hoặc mật khẩu không chính xác!";
-        header("Location: index.php?act=change_pass");
+        $_SESSION['message'] = "Tên đăng nhập không chính xác!";
     }
+    header("Location: index.php?act=change_pass");
+    exit();
 }
 ?>
 

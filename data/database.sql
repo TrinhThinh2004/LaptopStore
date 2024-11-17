@@ -163,9 +163,9 @@ INSERT INTO Laptops (brand, model, processor, ram_capacity, ram_type, ram_speed,
 
 INSERT INTO Users (username, password, email, full_name, phone_number, address, role)
 VALUES 
-('admin', 'admin', 'admin@example.com', 'Admin User', '1234567890', '123 Admin St', 1),
-('user1', 'user1', 'user1@example.com', 'John Doe', '0987654321', '456 John Ave', 0),
-('user2', 'user2', 'user2@example.com', 'John Doe', '0987654321', '456 John Ave', 0);
+('admin', 'admin', 'admin@laptop4u.com', 'Admin', '0911118888', '123, Tô Ký, Quận 12, TP.HCM', 1),
+('user1', '111111', 'user1@gmail.com', 'Bảo Lan', '0987654321', '2 Võ Oanh, Phường 25, Quận Bình Thạnh, TP. Hồ Chí Minh', 0),
+('user2', '111111', 'user2@gmail.com', 'Hải', '0987654321', 'Tân Phong, Giá Rai, Bạc Liêu', 0);
 
 
 INSERT INTO Categories (category_name, description)

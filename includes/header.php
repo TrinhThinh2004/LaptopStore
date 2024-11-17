@@ -33,9 +33,12 @@ if (isset($_SESSION["username"])) {
                 </li>
 
                 <li class="nav-item text-icon">
-                    <a href="index.php?act=cart"><i class="fa-solid fa-cart-shopping icon"></i><span class="quantity"><?php echo $quantity; ?></span></a>
-
+                    <a href="index.php?act=cart">
+                        <i class="fa-solid fa-cart-shopping icon"></i>
+                        <span class="quantity"><?php echo $quantity; ?></span>
+                    </a>
                 </li>
+                
                 <li class="nav-item text-icon">
                     <a href=<?php echo $link_user; ?>>
                         <i class="fa-solid fa-user icon"></i><?php echo $username; ?>

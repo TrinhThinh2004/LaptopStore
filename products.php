@@ -40,21 +40,25 @@
         ?>
     </div>
     <?php if ($total_page > 1) { ?>
-        <div class="page-option">
-            <p>Trang
-                <?php
-                for ($i = 1; $i <= $total_page; $i++) {
-                    if ($page == $i)
-                        echo "<span class='now'>$i</span>";
-                    else { ?>
-                        <a href="?act=products<?php echo $brand; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                <?php
-                    }
+    <div class="page-option">
+        <p>Trang:
+            <?php
+            // Thu thập các tham số GET hiện tại
+            $query_params = $_GET; // Lấy tất cả tham số hiện có
+            for ($i = 1; $i <= $total_page; $i++) {
+                $query_params['page'] = $i; // Cập nhật tham số 'page' cho từng liên kết
+                $query_string = http_build_query($query_params); // Tạo query string
+
+                if ($page == $i) {
+                    // Hiển thị trang hiện tại (không tạo link)
+                    echo "<span class='now'>$i</span>";
+                } else {
+                    // Tạo liên kết cho các trang khác
+                    echo "<a href='index.php?$query_string'>$i</a>";
                 }
-                ?>
-            </p>
-        </div>
-    <?php
-    }
-    ?>
+            }
+            ?>
+        </p>
+    </div>
+<?php } ?>
 </div>

@@ -18,7 +18,10 @@ if (isset($_POST['submit'])) {
         if (mysqli_num_rows($result) > 0) {
             $message = 'Tên đăng nhập hoặc email đã tồn tại';
         } else {
-            $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$password', '$email')";
+            // Mã hóa mật khẩu
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
+            $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashed_password', '$email')";
             if (mysqli_query($conn, $sql)) {
                 $_SESSION['success_message'] = 'Đăng ký thành công, vui lòng đăng nhập';
                 header('location: login.php');

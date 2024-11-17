@@ -11,43 +11,49 @@ if (isset($_POST["submit"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     if (isset($username) && isset($password)) {
-        $sql = "SELECT * FROM users where username='$username' AND password='$password' AND deleted=0";
+        $sql = "SELECT * FROM users where username='$username' AND deleted=0";
         $query = mysqli_query($conn, $sql);
-        $row = mysqli_num_rows($query);
-        if ($row > 0) {
+        if (mysqli_num_rows($query) > 0) {
             $user = mysqli_fetch_assoc($query);
-            $_SESSION["username"] = $username;
-            $_SESSION["user_id"] = $user["user_id"];
-            $user_id = $user["user_id"];
+            if (password_verify($password, $user["password"])) {
+                // Đăng nhập thành công (mật khẩu mã hóa)
+                login_success($user);
+            } else if ($password === $user["password"]) {
+                // Kiểm tra mật khẩu dạng văn bản thuần (tạm thời)
+                // Cập nhật mật khẩu thành mã hóa
+                $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+                $update_sql = "UPDATE users SET password='$hashed_password' WHERE user_id=" . $user["user_id"];
+                mysqli_query($conn, $update_sql);
 
-            // Tạo số trên giỏ hàng trên thanh header
-            $count_query = "SELECT COUNT(DISTINCT laptop_id) AS unique_products FROM Cart WHERE user_id = $user_id";
-            $result_count = mysqli_query($conn, $count_query);
-            $row_count = mysqli_fetch_assoc($result_count);
-            $_SESSION['quantity'] = $row_count['unique_products'];
-
-            // Lấy role và chuyển đến trang tương ứng
-            $_SESSION["role"] = $user["role"];
-            if ($user["role"] == "1") {
-                header('location: admin/dashboard.php');
+                // Đăng nhập thành công
+                login_success($user);
             } else {
-                header('location: index.php');
+                $message = "Mật khẩu không chính xác";
             }
-            exit;
         } else {
             $message = "Tài khoản không tồn tại";
         }
     }
 }
+function login_success($user)
+{
+    session_start();
+    $_SESSION["username"] = $user["username"];
+    $_SESSION["user_id"] = $user["user_id"];
+    $_SESSION["role"] = $user["role"];
+
+    // Chuyển hướng
+    if ($user["role"] == "1") {
+        header('location: admin/dashboard.php');
+    } else {
+        header('location: index.php');
+    }
+    exit;
+}
 
 ?>
 <link rel="stylesheet" href="assets/css/login.css">
 
-<!-- <?php
-        if (isset($_POST[$success_message]) && $success_message != '') {
-            echo "<div style='color: green; text-align: center;'>$success_message</div>";
-        }
-        ?> -->
 <div class="login-container">
     Vô admin:
     username: admin, password: admin <br>
